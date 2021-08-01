@@ -1,24 +1,33 @@
-# README
+# トレ飯
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+**トレ飯**は主に、トレーニングをしていて、ダイエットをしたい人向けにレシピを投稿したり閲覧することができるサイトです。
 
-Things you may want to cover:
+### サイトテーマ
+トレーニング・ダイエット中の食事をもっと楽しくをテーマにしたレシピサイトです。
 
-* Ruby version
+### テーマを選んだ理由
+私自身トレーニングが好きで、食事もダイエットのために鶏胸肉中心の料理を食べているのですが、レパートリーが少なくすぐに飽きてしまいます。
+それを解決するためにトレーニングをしている人向けのレシピサイトが欲しいと思いました。
 
-* System dependencies
+### ターゲットユーザ
+- 健康やダイエットに関心のある人
+- ダイエットのための新しいレシピを探している人
 
-* Configuration
+### 主な利用シーン
+- レシピを確認しながら料理を作りたい時
 
-* Database creation
+## 設計書
+- ER図
+- UI Flow
+- テーブル定義書
 
-* Database initialization
+## チャレンジ要素一覧
+<https://docs.google.com/spreadsheets/d/1E4Quehglf9PxM1XTE-ft2X5-hJ5dmoJhsI-UJlgzVmY/edit#gid=0>
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
