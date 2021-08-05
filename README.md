@@ -22,7 +22,7 @@
 - レシピを確認しながら料理を作りたい時
 
 ## 設計書
-- ER図
+- [ER図](https://drive.google.com/file/d/1ZjsV8mWFEESAiq90yNLtkP1X00P8-sl6/view?usp=sharing)
 - UI Flow
 - テーブル定義書
 
