@@ -23,8 +23,8 @@
 
 ## 設計書
 - [ER図](https://drive.google.com/file/d/1ZjsV8mWFEESAiq90yNLtkP1X00P8-sl6/view?usp=sharing)
-- UI Flow　　会員側　
-- UI Flow　　管理者側
+- UI Flow　会員側　
+- UI Flow　管理者側
 - テーブル定義書
 
 ## チャレンジ要素一覧
