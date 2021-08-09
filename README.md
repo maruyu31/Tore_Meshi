@@ -25,7 +25,7 @@
 - [ER図](https://drive.google.com/file/d/1ZjsV8mWFEESAiq90yNLtkP1X00P8-sl6/view?usp=sharing)
 - [UI Flows　会員側　](https://drive.google.com/file/d/15tYLg2BRsuWrQOD-Zr3iHIyDWsnvFfpy/view?usp=sharing)
 - [UI Flows　管理者側](https://drive.google.com/file/d/1hBcQvt3XypZlPV9YHpyXh7lTSNdsAgBP/view?usp=sharing)
-- [テーブル定義書]()
+- [テーブル定義書](https://docs.google.com/spreadsheets/d/1XQj2pY5ao0zJ0qVTi_4C2-dEfphZyPl5S6HzHakL79k/edit?usp=sharing)
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/1iP5votBC6Ede-IYS_CTnaRX-92kpXulQRfwY07F0nBM/edit?usp=sharing>
