@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light w-100 pr-0 pl-0">
+  <div class="container-fluid">
+    <h1><%= link_to "トレ飯", root_path, class: "text-dark text-decoration-none text-left mt-4 header-logo"%></h1>
+    <!--ハンバーガーメニュー-->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <% if user_signed_in? %>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-auto">
+        <li class="nav-item nav-menu-item">
+          <%= link_to user_path(current_user), class: 'nav-link text-dark mr-2' do %>
+            マイページ
+          <% end %>
+        </li>
+        <li class="nav-item nav-menu-item">
+          <%= link_to "", class: 'nav-link text-dark mr-2 header-cart' do %>
+            レシピ投稿
+          <% end %>
+        </li>
+        <li class="nav-item nav-menu-item">
+          <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark mr-2' do %>
+            ログアウト
+          <% end %>
+        </li>
+      </ul>
+    <% elsif admin_signed_in? %>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-auto">
+        <li class="nav-item nav-menu-item">
+          <%= link_to "", class: 'nav-link text-dark mr-2' do %>
+            会員一覧
+          <% end %>
+        </li>
+        <li class="nav-item nav-menu-item">
+          <%= link_to "", class: 'nav-link text-dark mr-2 header-cart' do %>
+            レシピ一覧
+          <% end %>
+        </li>
+        <li class="nav-item nav-menu-item">
+          <%= link_to "", method: :delete, class: 'nav-link text-dark mr-2' do %>
+            タグ一覧
+          <% end %>
+        </li>
+        <li class="nav-item nav-menu-item">
+          <%= link_to "", class: 'nav-link text-dark mr-2 header-cart' do %>
+            お問い合わせ一覧
+          <% end %>
+        </li>
+        <li class="nav-item nav-menu-item">
+          <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark mr-2' do %>
+            ログアウト
+          <% end %>
+        </li>
+      </ul>
+    <% else %>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-auto">
+        <li class="nav-item nav-menu-item">
+          <%= link_to about_path, class: 'nav-link text-dark mr-2' do %>
+            About
+          <% end %>
+        </li>
+        <li class="nav-item nav-menu-item">
+          <%= link_to new_user_registration_path, class: 'nav-link text-dark mr-2 header-cart' do %>
+            新規登録
+          <% end %>
+        </li>
+        <li class="nav-item nav-menu-item">
+          <%= link_to new_user_session_path, class: 'nav-link text-dark mr-2' do %>
+            ログイン
+          <% end %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+</nav>
