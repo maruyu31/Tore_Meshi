@@ -16,3 +16,18 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+p, a, h1, h2, h3, h4, h5, span, strong {
+font-family: 'Shippori Mincho B1', serif;
+font-weight: bold;
+}
+
+li {
+  list-style: none;
+}
