@@ -6,10 +6,12 @@ Rails.application.routes.draw do
   devise_for :admins, module: "admin/admins", path: "/admin"
   root :to => "public/homes#top"
   get "about" => "public/homes#about"
-  resources :users, only: [:show, :edit, :cancel], controller: "public/users"
+
+  resources :users, only: [:show, :edit, :update], controller: "public/users"
+  get "users/:id/cancel" => "public/users#cancel",  as: 'cancel'
 
   namespace :admin do
     get "/" => "contacts#index"
-    resources :contacts, only: [:index, :show], controller: "admin/contacts"
+    resources :contacts, only: [:index, :show]
   end
 end

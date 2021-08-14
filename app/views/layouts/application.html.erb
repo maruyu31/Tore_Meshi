@@ -10,18 +10,12 @@
   </head>
 
   <body>
-    <header>
-      <%= render "shared/header" %>
-    </header>
-    
+    <header><%= render "shared/header" %></header>
     <main>
       <p id="notice" class="ml-5 mt-3"><%= notice %></p>
       <p id="alert" class="ml-5 mt-3"><%= alert %></p>
       <%= yield %>  
     </main>
-    
-    <footer>
-      <%= render "shared/footer" %>
-    </footer>
+    <footer><%= render "shared/footer" %></footer>
   </body>
 </html>

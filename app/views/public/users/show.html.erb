@@ -1,2 +1,60 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div class="container">
+  <div class="profile-header">
+    <div class="row">
+      <div class="col-2">
+        <%= attachment_image_tag @user, :profile_image, size: "100x100", fallback:"2977.jpg" %>
+      </div>
+      <div class="col-8">
+        <div class="mt-5">
+          <h4><%= @user.name %></h4>
+        </div>
+        <ul class="list-inline mb-0">
+          <li class="list-inline-item">
+            <%= link_to "フォロー" %>
+          </li>
+          |
+          <li class="list-inline-item">
+            <%= link_to "フォロワー" %>
+          </li>
+        </ul>
+      </div>
+      <div class="col-2 d-flex align-items-end">
+        <%= link_to "編集", edit_user_path(@user) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-tab mt-5">
+    <div class="row">
+      <div class="col">
+        <ul class="nav">
+          <li class="nav-item">
+            <a href="#contents1" class="nav-link active" data-toggle="tab">お気に入りレシピ</a>
+          </li>
+          <li class="nav-item">
+            <a href="#contents2" class="nav-link" data-toggle="tab">投稿したレシピ</a>
+          </li>
+          <li class="nav-item">
+            <a href="#contents3" class="nav-link" data-toggle="tab">コメントしたレシピ</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-tab-contents">
+    <div class="row">
+      <div class="tab-content">
+        <div id="contents1" class="tab-pane active">
+          <p>お気に入りに入れたレシピ</p>
+        </div>
+        <div id="contents2" class="tab-pane">
+          <p>いいねしたレシピ</p>
+        </div>
+        <div id="contents3" class="tab-pane">
+          <p>コメントしたレシピ</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

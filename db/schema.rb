@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_13_052549) do
+ActiveRecord::Schema.define(version: 2021_08_13_090746) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 2021_08_13_052549) do
   end
 
   create_table "contacts", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
+    t.string "title", null: false
+    t.text "body", null: false
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -90,7 +90,6 @@ ActiveRecord::Schema.define(version: 2021_08_13_052549) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.integer "recipe_id", null: false
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -102,7 +101,7 @@ ActiveRecord::Schema.define(version: 2021_08_13_052549) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name"
+    t.string "name", null: false
     t.text "introduction"
     t.string "profile_image_id"
     t.boolean "is_deleted", default: false, null: false
