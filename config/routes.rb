@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update], controller: "public/users"
   get "users/:id/cancel" => "public/users#cancel",  as: 'cancel'
+  resources :recipes, controller: "public/users"
 
   namespace :admin do
     get "/" => "contacts#index"
