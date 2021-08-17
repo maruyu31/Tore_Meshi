@@ -62,15 +62,9 @@ ActiveRecord::Schema.define(version: 2021_08_13_090746) do
     t.string "body"
   end
 
-  create_table "recipe_tags", force: :cascade do |t|
-    t.integer "recipe_id", null: false
-    t.integer "tag_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "recipes", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.integer "tag_id", null: false
     t.string "title", null: false
     t.text "introduction"
     t.string "image_id"

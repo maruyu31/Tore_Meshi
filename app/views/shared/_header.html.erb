@@ -13,7 +13,12 @@
           <% end %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to "", class: 'nav-link text-dark mr-2 header-cart' do %>
+          <%= link_to recipes_path, class: 'nav-link text-dark mr-2' do %>
+            レシピ一覧
+          <% end %>
+        </li>
+        <li class="nav-item nav-menu-item">
+          <%= link_to new_recipe_path, class: 'nav-link text-dark mr-2 header-cart' do %>
             レシピ投稿
           <% end %>
         </li>
@@ -31,7 +36,7 @@
           <% end %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to "", class: 'nav-link text-dark mr-2 header-cart' do %>
+          <%= link_to recipes_path, class: 'nav-link text-dark mr-2' do %>
             レシピ一覧
           <% end %>
         </li>
@@ -41,7 +46,7 @@
           <% end %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to "", class: 'nav-link text-dark mr-2 header-cart' do %>
+          <%= link_to "", class: 'nav-link text-dark mr-2' do %>
             お問い合わせ一覧
           <% end %>
         </li>
@@ -59,7 +64,7 @@
           <% end %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to new_user_registration_path, class: 'nav-link text-dark mr-2 header-cart' do %>
+          <%= link_to new_user_registration_path, class: 'nav-link text-dark mr-2' do %>
             新規登録
           <% end %>
         </li>
