@@ -1,2 +1,0 @@
-class RecipeTag < ApplicationRecord
-end
