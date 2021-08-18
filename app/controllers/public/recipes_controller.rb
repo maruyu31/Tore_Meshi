@@ -7,7 +7,7 @@ class Public::RecipesController < ApplicationController
   end
 
   def index
-    @recipes = Recipe.all.page(params[:page]).per(12)
+    @recipes = Recipe.all.order(created_at: :desc).page(params[:page]).per(12)
     @recipes_count = Recipe.all
     @tags = Tag.all
   end
@@ -18,6 +18,7 @@ class Public::RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
+    @tags = Tag.all
   end
 
   def create
@@ -31,6 +32,11 @@ class Public::RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
+    if @recipe.update(recipe_params)
+      redirect_to recipe_path(@recipe)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -42,6 +48,7 @@ class Public::RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(
       :user_id,
+      :tag_id,
       :title,
       :introduction,
       :image,

@@ -15,4 +15,30 @@ class Recipe < ApplicationRecord
     validates :carbohydrate
     validates :fat
   end
+
+  def protein_calory
+    self.protein * 4
+  end
+
+  def carbo_calory
+    self.carbohydrate * 4
+  end
+
+  def fat_calory
+    self.fat * 9
+  end
+
+  def total_calory
+    protein_calory + carbo_calory + fat_calory
+  end
+
+
+
+
+
+
+
+
+
+
 end

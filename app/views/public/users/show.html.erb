@@ -35,7 +35,7 @@
             <a href="#contents2" class="nav-link" data-toggle="tab">投稿したレシピ</a>
           </li>
           <li class="nav-item">
-            <a href="#contents3" class="nav-link" data-toggle="tab">コメントしたレシピ</a>
+            <a href="#contents3" class="nav-link" data-toggle="tab">いいねしたレシピ</a>
           </li>
         </ul>
       </div>
@@ -49,10 +49,23 @@
           <p>お気に入りに入れたレシピ</p>
         </div>
         <div id="contents2" class="tab-pane">
-          <p>いいねしたレシピ</p>
+            <% @recipes.each do |recipe| %>
+              <div class="col-xl-3 col-md-6 col-sm-12 m-4 p-0 border">
+                <%= link_to recipe_path(recipe) do %>
+                　<%= attachment_image_tag recipe, :image, :fill, 100, 100 %>
+                  <h4 class="mt-2 text-dark"><%= recipe.title %></h4>
+                <% end %>
+              </div>
+              <% if @user == current_user %>
+                <%= link_to "編集", edit_recipe_path(recipe) %>
+                <%= link_to "削除", recipe_path(recipe), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+              <% end %>
+            <% end %>
+            <%= paginate @recipes %>
+          </div>
         </div>
         <div id="contents3" class="tab-pane">
-          <p>コメントしたレシピ</p>
+          <p>いいねしたレシピ</p>
         </div>
       </div>
     </div>

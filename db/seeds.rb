@@ -25,7 +25,7 @@ Tag.create!(name: "おやつ")
 
 
 20.times do
-  Recipe.create!(
+  Recipe.create!({
     image: File.open('./app/assets/images/2977.jpg'),
     user_id: 1,
     tag_id: 2,
@@ -34,19 +34,17 @@ Tag.create!(name: "おやつ")
     serving: "1",
     carbohydrate: 10,
     protein: 2,
-    fat: 2
-    )
-
-  Ingredient.create!(
-    recipe_id: 1,
-    name: "こめ",
-    amount: "100"
-    )
-
-  Procedure.create!(
-    recipe_id: 1,
-    body: "握る"
-    )
+    fat: 2,
+    ingredients_attributes: [
+      {
+        name: "こめ",
+        amount: "100",
+      }
+    ],
+    procedures_attributes: [
+      {body: "握る"}
+    ]
+  })
 end
 
 

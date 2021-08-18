@@ -1,2 +1,72 @@
-<h1>Public::Recipes#show</h1>
-<p>Find me in app/views/public/recipes/show.html.erb</p>
+<div class="container">
+  <h2><%= @recipe.title %></h2>
+  <h6><%= @recipe.introduction %></h6>
+  <h6>by  <%= @recipe.user.name %></h6>
+  <div class="row mt-5">
+    <div class="col-md-6 col-sm-12">
+    <%= attachment_image_tag @recipe, :image, :fill, 460, 400 %>
+    </div>
+    <div class="col-md-6 col-sm-12 mx-auto">
+      <h2>カロリー表</h2>
+      総カロリー:<%= @recipe.total_calory %>kcal;
+      炭水化物:<%= @recipe.carbo_calory %>kcal;
+      タンパク質:<%= @recipe.protein_calory %>kcal;
+      脂質:<%= @recipe.fat_calory %>kcal
+      <canvas id="myPieChart"></canvas>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+
+      <script>
+        var ctx = document.getElementById("myPieChart");
+        var myPieChart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: ["炭水化物", "タンパク質", "脂質"],
+            datasets: [{
+              backgroundColor: [
+                  "blue",
+                  "red",
+                  "yellow"
+              ],
+              data: [
+                <%= @recipe.carbo_calory %>,
+                <%= @recipe.protein_calory %>,
+                <%= @recipe.fat_calory %>,
+              ],
+            }]
+          },
+          options: {
+            title: {
+              display: true,
+              text: '栄養素割合(kcal)'
+            }
+          }
+        });
+      </script>
+    </div>
+  </div>
+  <div class="row">
+    <h6 class="bg-light  d-inline-block">材料(<%= @recipe.serving %>人分)</h6>
+    <table class="table table-striped">
+      <tbody>
+        <% @recipe.ingredients.each do |ingredient| %>
+          <tr>
+            <td class="col-3"><%= ingredient.name %></td>
+            <td class="col-3"><%= ingredient.amount %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <h6 class="bg-light  d-inline-block">手順</h6>
+    <table class="table">
+      <tbody>
+        <% @recipe.procedures.each do |procedure| %>
+          <tr>
+            <td class="col-3"><%= procedure.body %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
