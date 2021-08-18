@@ -1,4 +1,4 @@
-<%= form_with model: @recipe, url: recipes_path, id: 'new_recipe', class: 'new_recipe form-horizontal', local: true do |f| %>
+<%= form_with model: @recipe, url: recipe_path, id: 'edit_recipe', class: 'edit_recipe form-horizontal', local: true do |f| %>
   <%= render "public/users/shared/error_messages", resource: @recipe %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
 
@@ -33,7 +33,7 @@
       <%= render 'ingredient_fields', f: ingredient %>
     <%end%>
     <div class="links">
-      <%= link_to_add_association "材料を追加", f, :ingredients, data: { association_insertion_node: '#ingredients', association_insertion_method: 'append' }  %>
+      <%= link_to_add_association "材料を追加", f, :ingredients %>
     </div>
   </div>
 
@@ -63,6 +63,6 @@
   </div>
 
   <div class="actions row">
-    <%= f.submit "新規登録", class: "btn btn-success btn-block col-md-3 offset-md-3" %>
+    <%= f.submit "編集", class: "btn btn-success btn-block col-md-3 offset-md-3" %>
   </div>
 <% end %>
