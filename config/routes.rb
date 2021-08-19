@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   root :to => "public/homes#top"
   get "about" => "public/homes#about"
 
-  resources :users, only: [:show, :edit, :update], controller: "public/users"
+  resources :users, only: [:show, :edit, :update], controller: "public/users" do
+    resource :relationships, only: [:create, :destroy], controller: "public/relationships"
+    get 'followings' => 'public/relationships#followings'
+    get 'followers' => 'public/relationships#followers'
+  end
   get "users/:id/cancel" => "public/users#cancel",  as: 'cancel'
   resources :recipes, controller: "public/recipes"
 
