@@ -7,14 +7,17 @@
       <div class="col-8">
         <div class="mt-5">
           <h4><%= @user.name %></h4>
+          <%= render 'public/relationships/follow_button', user: @user %>
         </div>
         <ul class="list-inline mb-0">
           <li class="list-inline-item">
-            <%= link_to "フォロー" %>
+            <%= link_to "フォロー", user_followings_path(@user) %>
+            <%= @user.followings.count %>
           </li>
           |
           <li class="list-inline-item">
-            <%= link_to "フォロワー" %>
+            <%= link_to "フォロワー", user_followers_path(@user) %>
+             <%= @user.followers.count %>
           </li>
         </ul>
       </div>
@@ -34,9 +37,6 @@
           <li class="nav-item">
             <a href="#contents2" class="nav-link" data-toggle="tab">投稿したレシピ</a>
           </li>
-          <li class="nav-item">
-            <a href="#contents3" class="nav-link" data-toggle="tab">いいねしたレシピ</a>
-          </li>
         </ul>
       </div>
     </div>
@@ -49,6 +49,7 @@
           <p>お気に入りに入れたレシピ</p>
         </div>
         <div id="contents2" class="tab-pane">
+          <% if @recipes.exists? %>
             <% @recipes.each do |recipe| %>
               <div class="col-xl-3 col-md-6 col-sm-12 m-4 p-0 border">
                 <%= link_to recipe_path(recipe) do %>
@@ -62,10 +63,9 @@
               <% end %>
             <% end %>
             <%= paginate @recipes %>
-          </div>
-        </div>
-        <div id="contents3" class="tab-pane">
-          <p>いいねしたレシピ</p>
+          <% else %>
+            <p>投稿されたレシピはありません</p>
+          <% end %>
         </div>
       </div>
     </div>
