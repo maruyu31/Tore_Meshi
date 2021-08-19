@@ -8,70 +8,52 @@
     <% if user_signed_in? %>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-auto">
         <li class="nav-item nav-menu-item">
-          <%= link_to user_path(current_user), class: 'nav-link text-dark mr-2' do %>
-            マイページ
-          <% end %>
+          <%= link_to 'マイページ', user_path(current_user), class: 'nav-link text-dark mr-2' %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to recipes_path, class: 'nav-link text-dark mr-2' do %>
-            レシピ一覧
-          <% end %>
+          <%= link_to 'レシピ一覧', recipes_path, class: 'nav-link text-dark mr-2' %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to new_recipe_path, class: 'nav-link text-dark mr-2 header-cart' do %>
-            レシピ投稿
-          <% end %>
+          <%= link_to 'レシピ投稿', new_recipe_path, class: 'nav-link text-dark mr-2 header-cart' %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark mr-2' do %>
-            ログアウト
-          <% end %>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-dark mr-2' %>
         </li>
       </ul>
     <% elsif admin_signed_in? %>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-auto">
         <li class="nav-item nav-menu-item">
-          <%= link_to "", class: 'nav-link text-dark mr-2' do %>
-            会員一覧
-          <% end %>
+          <%= link_to "会員一覧", class: 'nav-link text-dark mr-2' %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to recipes_path, class: 'nav-link text-dark mr-2' do %>
-            レシピ一覧
-          <% end %>
+          <%= link_to 'レシピ一覧', recipes_path, class: 'nav-link text-dark mr-2' %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to "", method: :delete, class: 'nav-link text-dark mr-2' do %>
-            タグ一覧
-          <% end %>
+          <%= link_to "タグ一覧", method: :delete, class: 'nav-link text-dark mr-2' %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to "", class: 'nav-link text-dark mr-2' do %>
-            お問い合わせ一覧
-          <% end %>
+          <%= link_to "お問い合わせ一覧", class: 'nav-link text-dark mr-2' %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark mr-2' do %>
-            ログアウト
-          <% end %>
+          <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-dark mr-2' %>
+        </li>
+        <li class="nav-item nav-menu-item">
+          <%= link_to 'ゲストログイン（閲覧用）', admins_guest_sign_in_path, method: :post, class: 'nav-link text-dark mr-2' %>
         </li>
       </ul>
     <% else %>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-auto">
         <li class="nav-item nav-menu-item">
-          <%= link_to about_path, class: 'nav-link text-dark mr-2' do %>
-            About
-          <% end %>
+          <%= link_to 'About', about_path, class: 'nav-link text-dark mr-2' %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to new_user_registration_path, class: 'nav-link text-dark mr-2' do %>
-            新規登録
-          <% end %>
+          <%= link_to '新規登録', new_user_registration_path, class: 'nav-link text-dark mr-2' %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to new_user_session_path, class: 'nav-link text-dark mr-2' do %>
-            ログイン
-          <% end %>
+          <%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-dark mr-2' %>
+        </li>
+        <li class="nav-item nav-menu-item">
+          <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: 'nav-link text-dark mr-2' %>
         </li>
       </ul>
     <% end %>

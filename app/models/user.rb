@@ -32,8 +32,16 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
-  # is_deleted==trueの場合、ログインさせない
+  # ユーザーが退会した際に、ログインできないようにする
   def active_for_authentication?
     super && !(is_deleted?)
+  end
+
+  #ゲストユーザー
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.name = "ゲストユーザー"
+      user.password = SecureRandom.urlsafe_base64
+    end
   end
 end
