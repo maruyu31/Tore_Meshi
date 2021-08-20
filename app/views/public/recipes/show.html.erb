@@ -2,6 +2,9 @@
   <h2><%= @recipe.title %></h2>
   <h6><%= @recipe.introduction %></h6>
   <h6>by  <%= link_to @recipe.user.name, user_path(@recipe.user) %></h6>
+  <div id="favorite_<%= @recipe.id %>">
+    <%= render "public/favorites/favorite", recipe: @recipe %>
+  </div>
   <div class="row mt-5">
     <div class="col-md-6 col-sm-12">
     <%= attachment_image_tag @recipe, :image, :fill, 460, 400 %>

@@ -14,7 +14,7 @@
 
   <div class="field form-group row">
     <%= f.label :"カテゴリー", class: "col-md-3 control-label h5" %>
-    <%= f.collection_select :tag_id, @tags, :id, :name, prompt: "カテゴリーを選んでください" %>
+    <%= f.collection_select :tag_id, Tag.all, :id, :name, prompt: "カテゴリーを選んでください" %>
   </div>
 
   <div class="field form-group row">
