@@ -1,9 +1,10 @@
 class Recipe < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :procedures, dependent: :destroy
   has_many :ingredients, dependent: :destroy
-  accepts_nested_attributes_for :procedures, :ingredients, reject_if: :all_blank, allow_destroy: true #子項目削除のため
+  accepts_nested_attributes_for :procedures, :ingredients, allow_destroy: true #子項目削除のため
   belongs_to :tag
   attachment :image
 
@@ -31,7 +32,7 @@ class Recipe < ApplicationRecord
   def total_calory
     protein_calory + carbo_calory + fat_calory
   end
-  
+
   #ユーザーがレシピをお気に入り登録しているかを判断するメソッド
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
