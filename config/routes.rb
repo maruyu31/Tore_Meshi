@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get "users/:id/cancel" => "public/users#cancel",  as: 'cancel'
   resources :recipes, controller: "public/recipes" do
     resource :favorites, only: [:create, :destroy], controller: "public/favorites"
+    resources :comments, only: [:create, :destroy], controller: "public/comments"
   end
 
   namespace :admin do

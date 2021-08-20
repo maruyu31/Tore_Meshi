@@ -72,4 +72,20 @@
       </tbody>
     </table>
   </div>
+  <div class="row">
+    <ul>
+      <li>
+        <h3>コメント</h3>
+      </li>
+      <li id="comments">
+        <%= render "public/comments/index", recipe: @recipe %>
+      </li>
+    </ul>
+    <% if user_signed_in? %>
+      <div class="new-comment">
+        <h3>コメントする</h3>
+        <%= render "public/comments/form", recipe: @recipe, comment: @comment %>
+      </div>
+    <% end %>
+  </div>
 </div>

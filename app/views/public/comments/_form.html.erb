@@ -1,0 +1,4 @@
+<%= form_with model: [recipe, comment] do |f| %>
+  <%= f.text_area :comment, size:"90x5", placeholder: "コメントを入力してください" %>
+  <%= f.submit "送信" %>
+<% end %>
