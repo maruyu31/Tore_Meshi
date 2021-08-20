@@ -3,7 +3,6 @@ class Public::RecipesController < ApplicationController
     @recipe = Recipe.new
     @recipe.procedures.build
     @recipe.ingredients.build
-    @tags = Tag.all
   end
 
   def index
@@ -18,7 +17,6 @@ class Public::RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
-    @tags = Tag.all
   end
 
   def create
