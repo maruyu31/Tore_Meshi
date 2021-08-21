@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>フォロワー一覧</h2>
+  <div class="row">
+    <% if @users.exists? %>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td>
+              <%= link_to user_path(user) do %>
+              <%= user.name %>
+              <% end %>
+            </td>
+            <td>フォロー数: <%= user.followings.count %></td>
+            <td>フォロワー数: <%= user.followers.count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% else %>
+      <p>フォローされているユーザーはいません</p>
+    <% end %>
+  </div>
+</div>

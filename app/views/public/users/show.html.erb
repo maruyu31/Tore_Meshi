@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="profile-header">
+    <div class="row">
+      <div class="col-2">
+        <%= attachment_image_tag @user, :profile_image, size: "100x100", fallback:"2977.jpg" %>
+      </div>
+      <div class="col-8">
+        <div class="mt-5">
+          <h4><%= @user.name %></h4>
+          <%= render 'public/relationships/follow_button', user: @user %>
+        </div>
+        <ul class="list-inline mb-0">
+          <li class="list-inline-item">
+            <%= link_to "フォロー", user_followings_path(@user) %>
+            <%= @user.followings.count %>
+          </li>
+          |
+          <li class="list-inline-item">
+            <%= link_to "フォロワー", user_followers_path(@user) %>
+             <%= @user.followers.count %>
+          </li>
+        </ul>
+      </div>
+      <div class="col-2 d-flex align-items-end">
+        <%= link_to "編集", edit_user_path(@user) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-tab mt-5">
+    <div class="row">
+      <div class="col">
+        <ul class="nav">
+          <li class="nav-item">
+            <a href="#contents1" class="nav-link active" data-toggle="tab">お気に入りレシピ</a>
+          </li>
+          <li class="nav-item">
+            <a href="#contents2" class="nav-link" data-toggle="tab">投稿したレシピ</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-tab-contents">
+    <div class="row">
+      <div class="tab-content">
+        <div id="contents1" class="tab-pane active">
+          <% if @favorite_recipes.exists? %>
+            <% @favorite_recipes.each do |favorite| %>
+              <div class="col-xl-3 col-md-6 col-sm-12 m-4 p-0 border">
+                <%= link_to recipe_path(favorite) do %>
+                　<%= attachment_image_tag favorite.recipe, :image, :fill, 100, 100 %>
+                  <h4 class="mt-2 text-dark"><%= favorite.recipe.title %></h4>
+                <% end %>
+              </div>
+            <% end %>
+            <%= paginate @recipes %>
+          <% else %>
+            <p>お気に入り登録したレシピはありません</p>
+          <% end %>
+        </div>
+        <div id="contents2" class="tab-pane">
+          <% if @recipes.exists? %>
+            <% @recipes.each do |recipe| %>
+              <div class="col-xl-3 col-md-6 col-sm-12 m-4 p-0 border">
+                <%= link_to recipe_path(recipe) do %>
+                　<%= attachment_image_tag recipe, :image, :fill, 100, 100 %>
+                  <h4 class="mt-2 text-dark"><%= recipe.title %></h4>
+                <% end %>
+              </div>
+              <% if @user == current_user %>
+                <%= link_to "編集", edit_recipe_path(recipe) %>
+                <%= link_to "削除", recipe_path(recipe), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+              <% end %>
+            <% end %>
+            <%= paginate @recipes %>
+          <% else %>
+            <p>投稿されたレシピはありません</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

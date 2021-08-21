@@ -4,12 +4,18 @@
     <title>ToreMeshi</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header><%= render "shared/header" %></header>
+    <main>
+      <p id="notice" class="ml-5 mt-3"><%= notice %></p>
+      <p id="alert" class="ml-5 mt-3"><%= alert %></p>
+      <%= yield %>  
+    </main>
+    <footer><%= render "shared/footer" %></footer>
   </body>
 </html>
