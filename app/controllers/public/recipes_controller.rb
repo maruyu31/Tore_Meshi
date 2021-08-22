@@ -6,9 +6,14 @@ class Public::RecipesController < ApplicationController
   end
 
   def index
-    @recipes = Recipe.all.order(created_at: :desc).page(params[:page]).per(12)
-    @recipes_count = Recipe.all
     @tags = Tag.all
+    if params[:search].present?
+      @recipes = Recipe.search(params[:search]).page(params[:page]).per(12)
+      @recipes_count = Recipe.search(params[:search])
+    else
+      @recipes = Recipe.all.order(created_at: :desc).page(params[:page]).per(12)
+      @recipes_count = Recipe.all
+    end
   end
 
   def show
@@ -41,6 +46,12 @@ class Public::RecipesController < ApplicationController
   def destroy
     @recipe = Recipe.find(params[:id])
   end
+
+  def search
+    #Viewのformで取得したパラメータをモデルに渡す
+    @recipes = Recipe.search(params[:search])
+  end
+
 
   private
 
