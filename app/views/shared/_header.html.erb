@@ -5,6 +5,12 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <div class="mx-auto">
+      <%= form_with url: recipes_path, method: :get, local: true do |f| %>
+        <%= f.text_field :search, placeholder: "レシピを検索" %>
+        <%= f.submit '検索', name: nil %>
+      <% end %>
+    </div>
     <% if user_signed_in? %>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-auto">
         <li class="nav-item nav-menu-item">
