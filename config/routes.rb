@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy], controller: "public/favorites"
     resources :comments, only: [:create, :destroy], controller: "public/comments"
   end
+  resources :contacts, only: [:create], controller: "public/contacts"
 
   namespace :admin do
     get "/" => "contacts#index"
