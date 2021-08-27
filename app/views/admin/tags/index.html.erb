@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-9 mx-auto">
+      <h3 class="bg-light p-3 my-4 d-inline-block">カテゴリー　一覧・追加</h3>
+      <%= form_with model: @tag, url: admin_tags_path, method: :post, class: "form-inline mt-4", local:true do |f| %>
+        <div class="form-group">
+          <label class="mr-3">カテゴリー名</label>
+          <%= f.text_field :name %>
+        </div>
+        <%= f.submit '新規登録', class: "btn btn-success ml-3" %>
+      <% end %>
+
+      <table class="table col-8 mt-5">
+        <thead class="thead-light">
+          <tr>
+            <th>カテゴリー</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @tags.each do |tag| %>
+          <tr>
+            <th><%= tag.name %></th>
+            <th><%= link_to "編集する", edit_admin_tag_path(tag), class: "btn btn-success mx-auto" %></th>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

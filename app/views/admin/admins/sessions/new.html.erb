@@ -23,4 +23,8 @@
   </div>
 <% end %>
 
+<div>
+  <%= link_to 'ゲストログイン（閲覧用）', admins_guest_sign_in_path, method: :post, class: 'nav-link text-dark mr-2' %>
+</div>
+
 <%= render "admin/admins/shared/links" %>

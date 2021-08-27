@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-9 mx-auto">
+      <h3 class="bg-light p-3 my-4 d-inline-block">レシピ一覧</h3>
+      <table class="table ml-5">
+        <tbody>
+          <tr class="bg-light">
+            <th>レシピID</th>
+            <th>タイトル</th>
+            <th>投稿者名</th>
+            <th>投稿日時</th>
+          </tr>
+
+          <% @recipes.each do |recipe| %>
+            <tr>
+              <td>
+                <%= link_to admin_recipe_path(recipe) do %>
+                  <%= recipe.id %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to admin_recipe_path(recipe) do %>
+                  <%= recipe.title %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to admin_user_path(recipe.user) do %>
+                  <%= recipe.user.name %>
+                <% end %>
+              </td>
+              <td><%= recipe.created_at %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <div>
+        <%= paginate @recipes %>
+      </div>
+    </div>
+  </div>
+</div>

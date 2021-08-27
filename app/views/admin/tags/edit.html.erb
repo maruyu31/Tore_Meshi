@@ -1,0 +1,10 @@
+<div class="col-10 mt-5">
+  <h5>ジャンル編集</h5>
+     <%= form_with model: @tag, url: admin_tag_path, method: :patch, class: "form-inline mt-4", local:true do |f| %>
+       <div class="form-group">
+         <label for="exampleInputTitle" class="mr-3">カテゴリー名</label>
+           <%= f.text_field :name %>
+       </div>
+           <%= f.submit "変更を保存", class: "btn btn-success ml-3" %>
+     <% end %>
+</div>

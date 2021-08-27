@@ -32,6 +32,21 @@ li {
   list-style: none;
 }
 
+body {
+  min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
+  position: relative; /* ←相対位置 */
+  padding-bottom: 60px; /* ←フッターの高さを指定 */
+}
+
+
+.footer {
+  position: absolute; /* 絶対位置　ページ最下部に表示 */
+  width: 100%;
+  bottom: 0;
+  background-color: black;
+}
+
+
 .pagination {
   justify-content: center;
 }
