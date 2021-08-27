@@ -29,23 +29,21 @@
     <% elsif admin_signed_in? %>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-auto">
         <li class="nav-item nav-menu-item">
-          <%= link_to "会員一覧", class: 'nav-link text-dark mr-2' %>
+          <%= link_to "会員一覧", admin_users_path, class: 'nav-link text-dark mr-2' %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to 'レシピ一覧', recipes_path, class: 'nav-link text-dark mr-2' %>
+          <%= link_to 'レシピ一覧', admin_recipes_path, class: 'nav-link text-dark mr-2' %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to "タグ一覧", method: :delete, class: 'nav-link text-dark mr-2' %>
+          <%= link_to "タグ一覧", admin_tags_path, class: 'nav-link text-dark mr-2' %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to "お問い合わせ一覧", class: 'nav-link text-dark mr-2' %>
+          <%= link_to "お問い合わせ一覧", admin_contacts_path, class: 'nav-link text-dark mr-2' %>
         </li>
         <li class="nav-item nav-menu-item">
           <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-dark mr-2' %>
         </li>
-        <li class="nav-item nav-menu-item">
-          <%= link_to 'ゲストログイン（閲覧用）', admins_guest_sign_in_path, method: :post, class: 'nav-link text-dark mr-2' %>
-        </li>
+
       </ul>
     <% else %>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-auto">

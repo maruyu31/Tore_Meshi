@@ -27,6 +27,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/" => "contacts#index"
-    resources :contacts, only: [:index, :show]
+    resources :users, only: [:index, :show, :update]
+    resources :recipes, only: [:index, :show, :destroy]
+    resources :tags, only: [:index, :edit, :create, :update]
+    resources :contacts, only: [:index, :show, :update]
   end
 end
