@@ -10,6 +10,9 @@ class Public::RecipesController < ApplicationController
     if params[:search].present?
       @recipes = Recipe.search(params[:search]).page(params[:page]).per(12)
       @recipes_count = Recipe.search(params[:search])
+    elsif params[:tag_search]
+      @recipes = Recipe.where(tag_id: params[:tag_search]).page(params[:page]).per(12)
+      @recipes_count = Recipe.where(tag_id: params[:tag_search])
     else
       @recipes = Recipe.all.order(created_at: :desc).page(params[:page]).per(12)
       @recipes_count = Recipe.all

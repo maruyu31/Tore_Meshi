@@ -1,63 +1,71 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light w-100 pr-0 pl-0">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark w-100 pr-0 pl-0">
   <div class="container-fluid">
-    <h1><%= link_to "トレ飯", root_path, class: "text-dark text-decoration-none text-left mt-4 header-logo"%></h1>
+    <h1><%= link_to "トレ飯", root_path, class: "text-light text-decoration-none text-left mt-4 header-logo"%></h1>
+    <div class="ml-5">
+      <%= form_with url: recipes_path, method: :get, local: true do |f| %>
+        <div class="row">
+          <%= f.text_field :search, placeholder: "レシピを検索", class: "form-control col-10 p-0" %>
+          <%= f.button :type => "submit", name: nil, class: "form-control col-2 btn btn-success", style: 'border-style: none;' do %>
+            <i class="fas fa-search"></i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
     <!--ハンバーガーメニュー-->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="mx-auto">
-      <%= form_with url: recipes_path, method: :get, local: true do |f| %>
-        <%= f.text_field :search, placeholder: "レシピを検索" %>
-        <%= f.submit '検索', name: nil %>
-      <% end %>
-    </div>
     <% if user_signed_in? %>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-auto">
         <li class="nav-item nav-menu-item">
-          <%= link_to 'マイページ', user_path(current_user), class: 'nav-link text-dark mr-2' %>
+          <%= link_to 'マイページ', user_path(current_user), class: 'nav-link text-light mr-2' %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to 'レシピ一覧', recipes_path, class: 'nav-link text-dark mr-2' %>
+          <%= link_to 'レシピ一覧', recipes_path, class: 'nav-link text-light mr-2' %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to 'レシピ投稿', new_recipe_path, class: 'nav-link text-dark mr-2 header-cart' %>
+          <%= link_to 'レシピ投稿', new_recipe_path, class: 'nav-link text-light mr-2 header-cart' %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-dark mr-2' %>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-light mr-2' %>
         </li>
       </ul>
     <% elsif admin_signed_in? %>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-auto">
         <li class="nav-item nav-menu-item">
-          <%= link_to "会員一覧", admin_users_path, class: 'nav-link text-dark mr-2' %>
+          <%= link_to "会員一覧", admin_users_path, class: 'nav-link text-light mr-2' %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to 'レシピ一覧', admin_recipes_path, class: 'nav-link text-dark mr-2' %>
+          <%= link_to 'レシピ一覧', admin_recipes_path, class: 'nav-link text-light mr-2' %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to "タグ一覧", admin_tags_path, class: 'nav-link text-dark mr-2' %>
+          <%= link_to "タグ一覧", admin_tags_path, class: 'nav-link text-light mr-2' %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to "お問い合わせ一覧", admin_contacts_path, class: 'nav-link text-dark mr-2' %>
+          <%= link_to "お問い合わせ一覧", admin_contacts_path, class: 'nav-link text-light mr-2' %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-dark mr-2' %>
+          <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-light mr-2' %>
         </li>
 
       </ul>
     <% else %>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-auto">
+      <ul class="navbar-nav me-auto">
         <li class="nav-item nav-menu-item">
-          <%= link_to 'About', about_path, class: 'nav-link text-dark mr-2' %>
+          <%= link_to 'トレ飯とは', about_path, class: 'nav-link text-light mr-2' %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to '新規登録', new_user_registration_path, class: 'nav-link text-dark mr-2' %>
+          <%= link_to '新規登録', new_user_registration_path, class: 'nav-link text-light mr-2' %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-dark mr-2' %>
+          <%= link_to 'ログイン', new_user_session_path, class: 'nav-link text-light mr-2' %>
         </li>
         <li class="nav-item nav-menu-item">
-          <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: 'nav-link text-dark mr-2' %>
+          <% if current_page?(admin_session_path) %>
+            <%= link_to 'ゲスト管理者ログイン（閲覧用）', admins_guest_sign_in_path, method: :post, class: 'nav-link text-light mr-2' %>
+        <% else %>
+          <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: 'nav-link text-light mr-2' %>
+        <% end %>
         </li>
       </ul>
     <% end %>

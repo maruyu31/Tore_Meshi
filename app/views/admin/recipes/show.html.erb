@@ -6,8 +6,6 @@
       <div>
         <%= attachment_image_tag @recipe, :image, :fill, 460, 400 %>
       </div>
-
-
       <div>
         <%= link_to "削除する", admin_recipe_path(@recipe), method: :delete, data: { confirm: "本当に削除しますか？" } %>
       </div>
