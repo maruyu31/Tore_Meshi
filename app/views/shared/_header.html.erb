@@ -1,16 +1,18 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-dark w-100 pr-0 pl-0">
   <div class="container-fluid">
     <h1><%= link_to "トレ飯", root_path, class: "text-light text-decoration-none text-left mt-4 header-logo"%></h1>
-    <div class="ml-5">
-      <%= form_with url: recipes_path, method: :get, local: true do |f| %>
-        <div class="form-inline">
-          <%= f.text_field :search, placeholder: "レシピを検索", class: "form-control col-10 p-0", size: 60 %>
-          <%= f.button :type => "submit", name: nil, class: "form-control col-2 btn btn-success", style: 'border-style: none;' do %>
-            <i class="fas fa-search"></i>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+    <% unless admin_signed_in? %>
+      <div class="ml-5">
+        <%= form_with url: recipes_path, method: :get, local: true do |f| %>
+          <div class="form-inline">
+            <%= f.text_field :search, placeholder: "レシピを検索", class: "form-control col-10 p-0", size: 60 %>
+            <%= f.button :type => "submit", name: nil, class: "form-control col-2 btn btn-success", style: 'border-style: none;' do %>
+              <i class="fas fa-search"></i>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
     <!--ハンバーガーメニュー-->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
