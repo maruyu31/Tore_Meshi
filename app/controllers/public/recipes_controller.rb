@@ -1,4 +1,6 @@
 class Public::RecipesController < ApplicationController
+  before_action :authenticate_user!
+  
   def new
     @recipe = Recipe.new
     @recipe.procedures.build
