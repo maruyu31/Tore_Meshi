@@ -1,21 +1,22 @@
 <div class="container">
-  <h2>フォロー一覧</h2>
+  <h2 class="pt-3">フォロー一覧</h2>
   <div class="row">
     <% if @users.exists? %>
-      <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <td>
-              <%= link_to user_path(user) do %>
-              <%= user.name %>
-              <% end %>
-            </td>
-            <td>フォロー数: <%= user.followings.count %></td>
-            <td>フォロワー数: <%= user.followers.count %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+      <table>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td class="p-3">
+                <%= link_to user_path(user) do %>
+                  ・<%= user.name %>
+                <% end %>
+              </td>
+              <td class="p-3">フォロー数: <%= user.followings.count %></td>
+              <td class="p-3">フォロワー数: <%= user.followers.count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     <% else %>
       <p>フォローしているユーザーはいません</p>
     <% end %>

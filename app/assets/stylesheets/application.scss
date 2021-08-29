@@ -18,20 +18,37 @@
 @import 'font-awesome';
 
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
 }
 
 p, a, h1, h2, h3, h4, h5, span, strong {
-font-family: 'Shippori Mincho B1', serif;
-font-weight: bold;
+ font-family: 'Shippori Mincho B1', serif;
+ font-weight: bold;
+}
+
+a:hover {
+ text-decoration: none;
 }
 
 li {
-  list-style: none;
+ list-style: none;
+}
+
+body {
+ min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
+ position: relative; /* ←相対位置 */
+ padding-bottom: 60px; /* ←フッターの高さを指定 */
+}
+
+.footer {
+ position: absolute; /* 絶対位置　ページ最下部に表示 */
+ width: 100%;
+ bottom: 0;
+ background-color: #222222;
 }
 
 .pagination {
-  justify-content: center;
+ justify-content: center;
 }

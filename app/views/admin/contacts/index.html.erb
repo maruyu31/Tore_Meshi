@@ -1,2 +1,38 @@
-<h1>Admin::Contacts#index</h1>
-<p>Find me in app/views/admin/contacts/index.html.erb</p>
+<div class="container-fluid">
+  <h3 class="p-5">お問い合わせ一覧</h3>
+  <div class="row">
+    <div class="col-md-9 mx-auto">
+      <table class="table ml-5">
+        <tbody>
+          <tr class="bg-light">
+            <th>問い合わせ番号</th>
+            <th>問い合わせタイトル</th>
+            <th>ステータス</th>
+            <th>問い合わせ日時</th>
+          </tr>
+
+          <% @contacts.each do |contact| %>
+            <tr>
+              <td>
+                <%= link_to admin_contact_path(contact) do %>
+                  <%= contact.id %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to admin_contact_path(contact) do %>
+                  <%= contact.title %>
+                <% end %>
+              </td>
+              <td><%= contact.status%></td>
+              <td><%= contact.created_at%></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <div>
+        <%= paginate @contacts %>
+      </div>
+    </div>
+  </div>
+</div>

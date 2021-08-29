@@ -19,13 +19,18 @@ Rails.application.routes.draw do
     get 'followers' => 'public/relationships#followers'
   end
   get "users/:id/cancel" => "public/users#cancel",  as: 'cancel'
+  patch "users/:id/cancel" => "public/users#unsubscribe", as: 'unsubscribe'
   resources :recipes, controller: "public/recipes" do
     resource :favorites, only: [:create, :destroy], controller: "public/favorites"
     resources :comments, only: [:create, :destroy], controller: "public/comments"
   end
+  resources :contacts, only: [:create], controller: "public/contacts"
 
   namespace :admin do
     get "/" => "contacts#index"
-    resources :contacts, only: [:index, :show]
+    resources :users, only: [:index, :show, :update]
+    resources :recipes, only: [:index, :show, :destroy]
+    resources :tags, only: [:index, :edit, :create, :update]
+    resources :contacts, only: [:index, :show, :update]
   end
 end

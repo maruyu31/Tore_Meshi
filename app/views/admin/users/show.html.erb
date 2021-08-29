@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 mx-auto">
+      <%= form_with model: @user, url: admin_user_path, method: :patch do |f| %>
+        <div class="field form-group">
+          <%= f.label "会員ステータス", class: "control-label h5" %>
+          <div>
+            <%= f.radio_button :is_deleted, :false, include_hidden: false %>
+            <%= f.label :"有効", class: "control-label" %>
+          </div>
+          
+          <div>
+            <%= f.radio_button :is_deleted, :true, include_hidden: true %>
+            <%= f.label :"退会", class: "control-label" %>
+          </div>
+          
+          <div class="actions">
+            <%= f.submit "変更", class: "btn btn-success" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

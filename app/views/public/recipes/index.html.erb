@@ -1,11 +1,17 @@
 <div class="container">
-  <h3 class="m-5">新着レシピ一覧</h3>
-  <span>(全<%= @recipes_count.count %>件)</span>
+  <% if params[:tag_search].present? && @recipes.present?%>
+    <h3 class="m-5">カテゴリー"<%= @recipes.first.tag.name %>"のレシピ一覧</h3>
+    <span>(全<%= @recipes_count.count %>件)</span>
+  <% else %>
+    <h3 class="m-5">レシピ一覧</h3>
+    <span>(全<%= @recipes_count.count %>件)</span>
+  <% end %>
+  
   <div class="row mx-auto">
     <% @recipes.each do |recipe| %>
       <div class="col-xl-3 col-md-6 col-sm-12 m-4 p-0 border">
         <%= link_to recipe_path(recipe) do %>
-        　<%= attachment_image_tag recipe, :image, :fill, 270, 230 %>
+        　<%= attachment_image_tag recipe, :image, :fill, 270, 235 %>
           <h4 class="mt-2 text-dark"><%= recipe.title %></h4>
         <% end %>
         <h6 class="mt-2 text-dark"><%= recipe.introduction.truncate(50) %></h6>

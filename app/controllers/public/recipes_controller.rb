@@ -1,4 +1,6 @@
 class Public::RecipesController < ApplicationController
+  before_action :authenticate_user!
+  
   def new
     @recipe = Recipe.new
     @recipe.procedures.build
@@ -6,9 +8,17 @@ class Public::RecipesController < ApplicationController
   end
 
   def index
-    @recipes = Recipe.all.order(created_at: :desc).page(params[:page]).per(12)
-    @recipes_count = Recipe.all
     @tags = Tag.all
+    if params[:search].present?
+      @recipes = Recipe.search(params[:search]).page(params[:page]).per(12)
+      @recipes_count = Recipe.search(params[:search])
+    elsif params[:tag_search]
+      @recipes = Recipe.where(tag_id: params[:tag_search]).page(params[:page]).per(12)
+      @recipes_count = Recipe.where(tag_id: params[:tag_search])
+    else
+      @recipes = Recipe.all.order(created_at: :desc).page(params[:page]).per(12)
+      @recipes_count = Recipe.all
+    end
   end
 
   def show
@@ -18,6 +28,7 @@ class Public::RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
+    @tags = Tag.all
   end
 
   def create
@@ -40,7 +51,15 @@ class Public::RecipesController < ApplicationController
 
   def destroy
     @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    redirect_to request.referer
   end
+
+  def search
+    #Viewのformで取得したパラメータをモデルに渡す
+    @recipes = Recipe.search(params[:search])
+  end
+
 
   private
 

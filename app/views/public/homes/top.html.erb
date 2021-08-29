@@ -1,1 +1,53 @@
-<h1>トップページ</h1>
+<div class="container">
+  <div class="row">
+    <h3 class="col-12 mt-5 mb-5">新着レシピ</h3>
+      <% @new_recipes.each do |recipe| %>
+        <div class="col-md-5 col-sm-12 text-center m-4 p-0">
+          <%= link_to recipe_path(recipe) do %>
+            <%= attachment_image_tag recipe, :image, :fill, 270, 235, class: "p-4" %>
+            <p class="text-dark"><%= recipe.title %></p>
+          <% end %>
+          <p>by <%= recipe.user.name %></p>
+        </div>
+      <% end %>
+    </div>
+    <div class='text-right'>
+      <%= link_to "レシピ一覧", recipes_path %>
+    </div>
+
+    <div class="row">
+      <h3 class="col-12 mt-5 mb-5">カテゴリ一覧</h3>
+      <div class="col-12">
+        <ul class="row">
+          <% @tags.each do |tag| %>
+            <li class="col-sm-12 col-md-3 mb-3 text-center text-dark"><%= link_to "・" + tag.name, recipes_path(tag_search: tag.id) %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <h3 class="col-12 mt-5 mb-5">お問い合わせ</h3>
+      <%= form_with model: @contact, url: contacts_path, id: "new_contact", class: 'new_contact form-horizontal col-12', local: true do |f| %>
+        <div class="field form-group">
+          <ul>
+            <li><%= f.label :"お問い合わせタイトル", class: "control-label" %></li>
+            <li><%= f.text_field :title, placeholder: "ご意見・ご要望、不具合など", size: 30 %></li>
+          </ul>
+        </div>
+
+        <div class="field form-group">
+          <ul>
+            <li><%= f.label :"お問い合わせ内容", class: "control-label" %></li>
+            <li><%= f.text_area :body, placeholder: "お気づきの点をお知らせください", size: "30x10" %></li>
+          </ul>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "送信", class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

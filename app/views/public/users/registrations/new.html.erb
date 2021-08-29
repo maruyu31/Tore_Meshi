@@ -1,34 +1,40 @@
-<h2>Sign up</h2>
+<div class="container">
+  <h3 class="p-5">新規会員登録</h3>
+  <div class="row">
+    <div class="col-sm-12 mx-auto pb-5">
 
-<%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
-  <%= render "public/users/shared/error_messages", resource: resource %>
+      <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+        <%= render "public/users/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
+        <div class="field form-group row">
+          <%= f.label :"名前", class: "col-sm-3 control-label" %>
+          <%= f.text_field :name, placeholder: "田中太郎", autofocus: true, size: 30 %>
+        </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
+        <div class="field form-group row">
+          <%= f.label :"メールアドレス", class: "col-sm-3 control-label" %>
+          <%= f.email_field :email, placeholder: "sample@example.com", autocomplete: "email", size: 30 %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+        <div class="field form-group row">
+          <%= f.label :"パスワード（6文字以上）", class: "col-sm-3 control-label" %>
+          <%= f.password_field :password, autocomplete: "new-password", size: 30 %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+        <div class="field form-group row">
+          <%= f.label :"パスワード（確認用）", class: "col-sm-3 control-label" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", size: 30 %>
+        </div>
 
-  <div class="actions">
-    <%= f.submit "新規登録", class: "btn btn-success btn-block col-sm-3 offset-sm-3" %>
-  </div>
-<% end %>
-
-<%= render "public/users/shared/links" %>
+        <div class="actions row">
+          <%= f.submit "新規登録", class: "btn btn-success btn-block col-sm-3 offset-sm-3" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-sm-12 mx-auto ">
+      <h5>既に登録済みの方</h5>
+      <div class="pt-4">
+        <%= render "public/users/shared/links" %>
+      </div>
+    </div>
+</div>

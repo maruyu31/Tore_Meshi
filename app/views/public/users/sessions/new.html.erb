@@ -1,26 +1,46 @@
-<h2>Log in</h2>
+<div class="container">
+  <h3 class="p-5">ログイン</h3>
+  <div class="row">
+    <div class="col-sm-12 mx-auto pb-5">
 
-<%= form_with model: @user, url: user_session_path, local: true do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+        <%= render "public/users/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+        <div class="field form-group row">
+          <%= f.label :"メールアドレス", class: "col-sm-3 control-label" %>
+          <%= f.email_field :email, placeholder: "sample@example.com", autofocus: true, autocomplete: "email", size: 30 %>
+        </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+        <div class="field form-group row">
+          <%= f.label :"パスワード", class: "col-sm-3 control-label" %><br />
+          <%= f.password_field :password, autocomplete: "new-password", size: 30 %>
+        </div>
+
+        <div class="actions row">
+          <%= f.submit "ログイン", class: "btn btn-primary btn-block col-sm-3 offset-sm-3" %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="field, offset-sm-3 pt-3">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "ログイン", class: "btn btn-primary btn-block col-sm-3 offset-sm-4" %>
+    <div class="col-sm-12 mx-auto ">
+      <h5>会員登録がお済みでない方</h5>
+      <div class="pt-4">
+        <%= render "public/users/shared/links" %>
+      </div>
+    </div>
+
+    <div class="col-sm-12 mx-auto pt-5">
+      <h5>管理者はこちら</h5>
+      <div class="pt-4">
+        <%= link_to "管理者ログインページ", admin_session_path %>
+      </div>
+    </div>
   </div>
-<% end %>
-
-<%= render "public/users/shared/links" %>
+</div>

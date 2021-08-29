@@ -38,11 +38,11 @@ class Recipe < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
-
-
-
-
-
-
-
+  def self.search(search)
+    if search
+      Recipe.where(['title LIKE ?', "%#{search}%"])
+    else
+      Recipe.all
+    end
+  end
 end

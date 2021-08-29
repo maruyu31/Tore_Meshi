@@ -1,2 +1,25 @@
-<h1>Admin::Contacts#show</h1>
-<p>Find me in app/views/admin/contacts/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12 mx-auto text-center">
+      <div>
+        <label>問い合わせタイトル</label>
+        <p><%= @contact.title%></p>
+      </div>
+      
+      <div>
+        <label>問い合わせ内容</label>
+        <p><%= @contact.body %></p>
+      </div>
+      
+      <%= form_with model: @contact, url: admin_contact_path, method: :patch do |f| %>
+        <div class="field form-group">
+          <%= f.label "問い合わせステータス", class: "control-label" %>
+          <div>
+            <%= f.select :status, Contact.statuses.keys.to_a, {} %>
+            <%= f.submit "変更", class: "btn btn-info" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
