@@ -3,16 +3,16 @@ class Public::CommentsController < ApplicationController
 
   def create
     @recipe = Recipe.find(params[:recipe_id])
-    @comment = @recipe.comments.new(comment_params)
+    @comment = Comment.new(comment_params)
+    @comment.recipe_id = @recipe.id
     @comment.user_id = current_user.id
     @comment.save
-    render :index
   end
 
   def destroy
-    Comment.find_by(id: params[:id], recipe_id: params[:recipe_id]).destroy
     @recipe = Recipe.find(params[:recipe_id])
-    render :index
+    @comment = @recipe.comments.find_by(params[:id])
+    @comment.destroy
   end
 
   private

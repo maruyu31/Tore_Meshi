@@ -1,7 +1,7 @@
 <div class="nested-fields">
-  <div class="field form-group row">
-    <%= f.text_field :name, class: "col-md-5", placeholder: "材料" %>
-    <%= f.text_field :amount, class: "col-md-2 offset-1", placeholder: "分量" %>
-    <%= link_to_remove_association "削除", f, class: "btn btn-secondary btn-block col-md-1 offset-1 " %>
+  <div class="field form-group mx-auto">
+    <%= f.text_field :name, class: "mr-3", size: 30, placeholder: "材料" %>
+    <%= f.text_field :amount, class: "mr-3", size: 15, placeholder: "分量" %>
+    <%= link_to_remove_association "削除", f, class: "btn btn-secondary" %>
   </div>
 </div>

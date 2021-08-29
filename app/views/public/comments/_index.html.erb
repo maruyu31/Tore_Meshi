@@ -1,17 +1,16 @@
-<%= recipe.comments.count %>件のコメント
 <% recipe.comments.each do |comment| %>
-  <li class="comment-container">
+  <li class="comment-container m-3 border-bottom">
     <div class="comment-box">
       <div>
-        <%= attachment_image_tag comment.user, :profile_image, class:"comment-image", size: "40x40" %>
+        <%= attachment_image_tag comment.user, :profile_image, class:"comment-image", size: "40x35" %>
         <p><%= link_to comment.user.name, user_path(comment.user) %></p>
       </div>
       <div class="comment-text">
         <%= comment.comment %>
-        <% if comment.user == current_user %>
-          <%= link_to "削除する", recipe_comment_path(comment.recipe, comment), method: :delete, remote: true %>
-        <% end %>
       </div>
+      <% if comment.user == current_user %>
+        <%= link_to "削除する", recipe_comment_path(comment.recipe_id, comment), method: :delete, remote: true %>
+      <% end %>
     </div>
   </li>
 <% end %>

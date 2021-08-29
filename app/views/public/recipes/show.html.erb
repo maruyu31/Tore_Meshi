@@ -11,46 +11,18 @@
     <div class="col-md-6 col-sm-12">
       <%= attachment_image_tag @recipe, :image, :fill, 460, 400 %>
     </div>
-    <div class="col-md-6 col-sm-12 mx-auto">
+    <div class="col-md-6 col-sm-12 mx-auto text-center">
       <h2>カロリー表</h2>
-      総カロリー:<%= @recipe.total_calory %>kcal;
+      <h4>総カロリー:<%= @recipe.total_calory %>kcal</h4>
       炭水化物:<%= @recipe.carbo_calory %>kcal;
       タンパク質:<%= @recipe.protein_calory %>kcal;
       脂質:<%= @recipe.fat_calory %>kcal
-      <canvas id="myPieChart"></canvas>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-
-      <script>
-        var ctx = document.getElementById("myPieChart");
-        var myPieChart = new Chart(ctx, {
-          type: 'pie',
-          data: {
-            labels: ["炭水化物", "タンパク質", "脂質"],
-            datasets: [{
-              backgroundColor: [
-                  "blue",
-                  "red",
-                  "yellow"
-              ],
-              data: [
-                <%= @recipe.carbo_calory %>,
-                <%= @recipe.protein_calory %>,
-                <%= @recipe.fat_calory %>,
-              ],
-            }]
-          },
-          options: {
-            title: {
-              display: true,
-              text: '栄養素割合(kcal)'
-            }
-          }
-        });
-      </script>
+      <%= render "calorie_graph", recipe: @recipe %>
     </div>
   </div>
+
   <div class="row">
-    <h6 class="bg-light  d-inline-block">材料(<%= @recipe.serving %>人分)</h6>
+    <h5 class="d-inline-block pt-5">材料(<%= @recipe.serving %>)</h5>
     <table class="table table-striped">
       <tbody>
         <% @recipe.ingredients.each do |ingredient| %>
@@ -63,7 +35,7 @@
     </table>
   </div>
   <div class="row">
-    <h6 class="bg-light  d-inline-block">手順</h6>
+    <h5 class="d-inline-block pt-4">手順</h5>
     <table class="table">
       <tbody>
         <% @recipe.procedures.each do |procedure| %>
@@ -74,19 +46,25 @@
       </tbody>
     </table>
   </div>
-  <div class="row">
-    <ul>
+
+  <div class="row pt-5">
+    <ul id="recipe_<%= @recipe.id %>">
       <li>
-        <h3>コメント</h3>
+        <h4 class="comments-count">コメント(<%= @recipe.comments.count %>件のコメント)</h4>
       </li>
       <li id="comments">
         <%= render "public/comments/index", recipe: @recipe %>
       </li>
     </ul>
     <% if user_signed_in? %>
-      <div class="new-comment">
+      <div class="new-comment col-12 p-0">
         <h3>コメントする</h3>
-        <%= render "public/comments/form", recipe: @recipe, comment: @comment %>
+        <%= form_with model: [@recipe, @comment] do |f| %>
+          <%= f.text_area :comment, size:"90x5", placeholder: "コメントを入力してください" %>
+          <div>
+            <%= f.submit "送信", class: "btn btn-primary" %>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>

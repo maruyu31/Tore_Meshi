@@ -1,21 +1,21 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 mx-auto">
+    <div class="col-sm-12 mt-5 text-center">
       <%= form_with model: @user, url: user_path(@user), class: 'form-horizontal', local: true do |f| %>
 
         <div class="field form-group row">
-          <%= f.label :"画像", class: "col-md-3 control-label h5" %>
-          <%= f.attachment_field :profile_image, class: "col-md-5 form-control-file user_image" %>
+          <%= f.label :"画像", class: "col-md-6 control-label h5" %>
+          <%= f.attachment_field :profile_image %>
         </div>
 
         <div class="field form-group row">
-          <%= f.label :"名前", class: "col-sm-3 control-label" %>
-          <%= f.text_field :name, autofocus: true, class: "col-sm-2" %>
+          <%= f.label :"名前", class: "col-sm-6 control-label h5" %>
+          <%= f.text_field :name, autofocus: true, size: 30 %>
         </div>
 
         <div class="field form-group row">
-          <%= f.label :"自己紹介", class: "col-sm-3 control-label" %>
-          <%= f.text_field :introduction, class: "col-sm-2" %>
+          <%= f.label :"自己紹介", class: "col-sm-6 control-label h5" %>
+          <%= f.text_field :introduction, size: 30 %>
         </div>
 
         <div class="field form-group row">

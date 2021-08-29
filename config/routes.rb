@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get 'followers' => 'public/relationships#followers'
   end
   get "users/:id/cancel" => "public/users#cancel",  as: 'cancel'
+  patch "users/:id/cancel" => "public/users#unsubscribe", as: 'unsubscribe'
   resources :recipes, controller: "public/recipes" do
     resource :favorites, only: [:create, :destroy], controller: "public/favorites"
     resources :comments, only: [:create, :destroy], controller: "public/comments"
