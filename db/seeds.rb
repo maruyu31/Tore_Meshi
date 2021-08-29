@@ -21,14 +21,84 @@ Tag.create!(name: "ヘルシー")
 Tag.create!(name: "増量")
 Tag.create!(name: "おかず")
 Tag.create!(name: "おやつ")
+Tag.create!(name: "その他")
 
 
 
-20.times do
+5.times do
   Recipe.create!({
     image: File.open('./app/assets/images/2977.jpg'),
     user_id: 1,
     tag_id: 2,
+    title: Faker::Food.ingredient,
+    introduction: Faker::Lorem.sentences(number: 30),
+    serving: "1",
+    carbohydrate: 10,
+    protein: 2,
+    fat: 2,
+    ingredients_attributes: [
+      {
+        name: "test",
+        amount: "test",
+      }
+    ],
+    procedures_attributes: [
+      {body: "test"}
+    ]
+  })
+end
+
+5.times do
+  Recipe.create!({
+    image: File.open('./app/assets/images/2977.jpg'),
+    user_id: 2,
+    tag_id: 1,
+    title: Faker::Food.ingredient,
+    introduction: Faker::Lorem.sentences(number: 30),
+    serving: "1",
+    carbohydrate: 30,
+    protein: 15,
+    fat: 4,
+    ingredients_attributes: [
+      {
+        name: "test",
+        amount: "test",
+      }
+    ],
+    procedures_attributes: [
+      {body: "test"}
+    ]
+  })
+end
+
+5.times do
+  Recipe.create!({
+    image: File.open('./app/assets/images/2977.jpg'),
+    user_id: 3,
+    tag_id: 4,
+    title: Faker::Food.ingredient,
+    introduction: Faker::Lorem.sentences(number: 30),
+    serving: "1",
+    carbohydrate: 10,
+    protein: 30,
+    fat: 5,
+    ingredients_attributes: [
+      {
+        name: "test",
+        amount: "test",
+      }
+    ],
+    procedures_attributes: [
+      {body: "test"}
+    ]
+  })
+end
+
+5.times do
+  Recipe.create!({
+    image: File.open('./app/assets/images/2977.jpg'),
+    user_id: 1,
+    tag_id: 3,
     title: Faker::Food.ingredient,
     introduction: Faker::Lorem.sentences(number: 30),
     serving: "1",
@@ -46,8 +116,3 @@ Tag.create!(name: "おやつ")
     ]
   })
 end
-
-
-
-
-
