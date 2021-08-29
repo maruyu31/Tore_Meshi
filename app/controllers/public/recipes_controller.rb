@@ -26,6 +26,7 @@ class Public::RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
+    @tags = Tag.all
   end
 
   def create
@@ -48,6 +49,8 @@ class Public::RecipesController < ApplicationController
 
   def destroy
     @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    redirect_to request.referer
   end
 
   def search

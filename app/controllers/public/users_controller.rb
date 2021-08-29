@@ -3,7 +3,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @recipes = Recipe.where(user_id: @user).order(created_at: :desc).page(params[:page]).per(10)
+    @recipes = Recipe.where(user_id: @user).order(created_at: :desc)
     @favorite_recipes = Favorite.where(user_id: @user.id)
   end
 
@@ -22,6 +22,13 @@ class Public::UsersController < ApplicationController
 
   def cancel
     @user = User.find(params[:id])
+  end
+
+  def unsubscribe
+    @user = User.find(params[:id])
+    @user.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
   end
 
   private

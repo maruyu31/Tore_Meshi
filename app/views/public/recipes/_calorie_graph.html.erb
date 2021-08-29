@@ -1,0 +1,30 @@
+<canvas id="myPieChart"></canvas>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+
+<script>
+  var ctx = document.getElementById("myPieChart");
+  var myPieChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ["炭水化物", "タンパク質", "脂質"],
+      datasets: [{
+        backgroundColor: [
+            "blue",
+            "red",
+            "yellow"
+        ],
+        data: [
+          <%= recipe.carbo_calory %>,
+          <%= recipe.protein_calory %>,
+          <%= recipe.fat_calory %>,
+        ],
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: '栄養素割合(kcal)'
+      }
+    }
+  });
+</script>
