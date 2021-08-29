@@ -1,7 +1,7 @@
 <div class="container-fluid">
+  <h3 class="p-5">カテゴリー　一覧・追加</h3>
   <div class="row">
     <div class="col-md-9 mx-auto">
-      <h3 class="bg-light p-3 my-4 d-inline-block">カテゴリー　一覧・追加</h3>
       <%= form_with model: @tag, url: admin_tags_path, method: :post, class: "form-inline mt-4", local:true do |f| %>
         <div class="form-group">
           <label class="mr-3">カテゴリー名</label>

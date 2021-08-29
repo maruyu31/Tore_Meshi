@@ -1,6 +1,6 @@
 <div class="container">
+  <h3 class="p-5">新規会員登録</h3>
   <div class="row">
-    <h3 class="bg-light p-3 my-4">新規会員登録</h3>
     <div class="col-sm-12 mx-auto pb-5">
 
       <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
@@ -31,10 +31,10 @@
         </div>
       <% end %>
     </div>
-
-    <h4 class="bg-light p-3 my-4">既に登録済みの方</h4>
-    <div class="col-sm-12 ">
-      <%= render "public/users/shared/links" %>
+    <div class="col-sm-12 mx-auto ">
+      <h5>既に登録済みの方</h5>
+      <div class="pt-4">
+        <%= render "public/users/shared/links" %>
+      </div>
     </div>
-  </div>
 </div>
