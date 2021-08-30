@@ -5,7 +5,7 @@ class Recipe < ApplicationRecord
   has_many :procedures, dependent: :destroy
   has_many :ingredients, dependent: :destroy
   accepts_nested_attributes_for :procedures, :ingredients, allow_destroy: true #子項目削除のため
-  belongs_to :tag
+  belongs_to :category
   attachment :image
 
   with_options presence: true do
