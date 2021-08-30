@@ -20,6 +20,15 @@
 ### 主な利用シーン
 - レシピを確認しながら料理を作りたい時
 
+      [会員ユーザーアカウント]
+        メールアドレス: test1@test.com
+        パスワード:    password
+      [管理者アカウント]
+        メールアドレス: admin@mail.com
+        パスワード:    password
+
+       また、ゲストログイン機能も実装しているのでそちらもご利用ください。
+
 ## 設計書
 - [ER図](https://drive.google.com/file/d/1ZjsV8mWFEESAiq90yNLtkP1X00P8-sl6/view?usp=sharing)
 - [UI Flows　会員側　](https://drive.google.com/file/d/15tYLg2BRsuWrQOD-Zr3iHIyDWsnvFfpy/view?usp=sharing)
