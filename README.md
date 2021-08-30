@@ -1,24 +1,38 @@
-# README
+# トレ飯
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+**トレ飯**は、主にトレーニング・ダイエットをしたい人向けにレシピを投稿したり閲覧することができるサイトです。  
+メインの機能は、レシピの投稿と投稿されたレシピの閲覧となっています。  
+他の機能として、カロリーを見ることができる機能や検索機能によって自分の見たいレシピを探すことができる機能、お気に入り機能で自分の気に入ったレシピを登録できる機能などが実装されています。  
+また、主にスマートフォンで見ることを想定して、レスポンシブ対応となっています。
+### サイトテーマ
+トレーニング・ダイエット中に何を食べれば良いのかを解決するためのレシピサイトです。
 
-Things you may want to cover:
+### テーマを選んだ理由
+昨今のコロナの影響で、自宅でトレーニングをしている人を私の周りや、SNS上でよく見かけるようになりました。  
+トレーニングを始めた結果、食事にも気を使いたいけどどんな料理を食べればいいか分からないという声を聞きます。  
+私自身トレーニングが好きで、食事もダイエットのために鶏胸肉中心の料理を食べているのですが、レパートリーが少なくすぐに飽きてしまいます。  
+それを解決するためにトレーニングをしている人向けのレシピサイトが欲しいと思い、このテーマを選ばせていただきました。  
 
-* Ruby version
+### ターゲットユーザ
+- 健康やダイエットに関心のある人
+- ダイエットのための新しいレシピを探している人
 
-* System dependencies
+### 主な利用シーン
+- レシピを確認しながら料理を作りたい時
 
-* Configuration
+## 設計書
+- [ER図](https://drive.google.com/file/d/1ZjsV8mWFEESAiq90yNLtkP1X00P8-sl6/view?usp=sharing)
+- [UI Flows　会員側　](https://drive.google.com/file/d/15tYLg2BRsuWrQOD-Zr3iHIyDWsnvFfpy/view?usp=sharing)
+- [UI Flows　管理者側](https://drive.google.com/file/d/1hBcQvt3XypZlPV9YHpyXh7lTSNdsAgBP/view?usp=sharing)
+- [テーブル定義書](https://docs.google.com/spreadsheets/d/1XQj2pY5ao0zJ0qVTi_4C2-dEfphZyPl5S6HzHakL79k/edit?usp=sharing)
 
-* Database creation
+## チャレンジ要素一覧
+<https://docs.google.com/spreadsheets/d/1iP5votBC6Ede-IYS_CTnaRX-92kpXulQRfwY07F0nBM/edit?usp=sharing>
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
