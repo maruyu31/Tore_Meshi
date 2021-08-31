@@ -12,21 +12,18 @@ class Recipe < ApplicationRecord
     validates :title
     validates :introduction
     validates :serving
-    validates :protein
-    validates :carbohydrate
-    validates :fat
   end
 
   def protein_calory
-    self.protein * 4
+    self.ingredients.all.sum(:protein) * 4
   end
 
   def carbo_calory
-    self.carbohydrate * 4
+    self.ingredients.all.sum(:carbohydrate) * 4
   end
 
   def fat_calory
-    self.fat * 9
+    self.ingredients.all.sum(:fat) * 9
   end
 
   def total_calory

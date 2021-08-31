@@ -1,7 +1,30 @@
-<div class="nested-fields">
-  <div class="field form-group mx-auto">
-    <%= f.text_field :name, class: "mr-3", size: 30, placeholder: "材料" %>
-    <%= f.text_field :amount, class: "mr-3", size: 15, placeholder: "分量" %>
-    <%= link_to_remove_association "削除", f, class: "btn btn-secondary" %>
+<div class="nested-fields mb-2 border">
+  <div class="field form-group">
+    <table class="table table-borderless table-sm text-center">
+      <tr>
+        <th>材料・調味料</th>
+        <th>分量</th>
+        <th><%= link_to_remove_association "削除", f, class: "btn btn-secondary offset-1" %></th>
+      </tr>
+      <tr>
+        <td><%= f.text_field :name, class: "mr-3", size: 30, placeholder: "材料" %></td>
+        <td><%= f.text_field :amount, class: "mr-3", size: 15, placeholder: "分量" %></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+  <div class="field form-group">
+    <table class="table table-borderless table-sm text-center">
+      <tr>
+        <th>炭水化物(g)</th>
+        <th>タンパク質(g)</th>
+        <th>脂質(g)</th>
+      </tr>
+      <tr>
+        <td><%= f.number_field :carbohydrate, step: "0.1" %></td>
+        <td><%= f.text_field :protein, step: "0.1" %></td>
+        <td><%= f.text_field :fat, step: "0.1" %></td>
+      </tr>
+    </table>
   </div>
 </div>
