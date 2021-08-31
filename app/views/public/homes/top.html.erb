@@ -12,15 +12,15 @@
       <% end %>
     </div>
     <div class='text-right'>
-      <%= link_to "レシピ一覧", recipes_path %>
+      <%= link_to "レシピ一覧", recipes_path, class: "text-dark" %>
     </div>
 
     <div class="row">
       <h3 class="col-12 mt-5 mb-5">カテゴリ一覧</h3>
       <div class="col-12">
-        <ul class="row">
-          <% @tags.each do |tag| %>
-            <li class="col-sm-12 col-md-3 mb-3 text-center text-dark"><%= link_to "・" + tag.name, recipes_path(tag_search: tag.id) %></li>
+        <ul class="list-group list-group-flush" style="max-width: 200px;">
+          <% @categories.each do |category| %>
+            <li class="list-group-item"><%= link_to "・" + category.name, recipes_path(category_search: category.id), class: "text-dark" %></li>
           <% end %>
         </ul>
       </div>

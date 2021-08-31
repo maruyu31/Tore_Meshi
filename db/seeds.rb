@@ -17,11 +17,11 @@ Admin.create!(email: "admin@mail.com", password: "password", password_confirmati
   )
 end
 
-Tag.create!(name: "ヘルシー")
-Tag.create!(name: "増量")
-Tag.create!(name: "おかず")
-Tag.create!(name: "おやつ")
-Tag.create!(name: "その他")
+Category.create!(name: "ヘルシー")
+Category.create!(name: "増量")
+Category.create!(name: "おかず")
+Category.create!(name: "おやつ")
+Category.create!(name: "その他")
 
 
 
@@ -29,7 +29,7 @@ Tag.create!(name: "その他")
   Recipe.create!({
     image: File.open('./app/assets/images/2977.jpg'),
     user_id: 1,
-    tag_id: 2,
+    category_id: 2,
     title: Faker::Food.ingredient,
     introduction: Faker::Lorem.sentences(number: 30),
     serving: "1",
@@ -52,7 +52,7 @@ end
   Recipe.create!({
     image: File.open('./app/assets/images/2977.jpg'),
     user_id: 2,
-    tag_id: 1,
+    category_id: 1,
     title: Faker::Food.ingredient,
     introduction: Faker::Lorem.sentences(number: 30),
     serving: "1",
@@ -75,7 +75,7 @@ end
   Recipe.create!({
     image: File.open('./app/assets/images/2977.jpg'),
     user_id: 3,
-    tag_id: 4,
+    category_id: 4,
     title: Faker::Food.ingredient,
     introduction: Faker::Lorem.sentences(number: 30),
     serving: "1",
@@ -97,8 +97,8 @@ end
 5.times do
   Recipe.create!({
     image: File.open('./app/assets/images/2977.jpg'),
-    user_id: 1,
-    tag_id: 3,
+    user_id: 4,
+    category_id: 3,
     title: Faker::Food.ingredient,
     introduction: Faker::Lorem.sentences(number: 30),
     serving: "1",

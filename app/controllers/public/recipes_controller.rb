@@ -1,6 +1,6 @@
 class Public::RecipesController < ApplicationController
-  before_action :authenticate_user!
-  
+  before_action :authenticate_user!, except: [:index, :show]
+
   def new
     @recipe = Recipe.new
     @recipe.procedures.build
@@ -8,13 +8,13 @@ class Public::RecipesController < ApplicationController
   end
 
   def index
-    @tags = Tag.all
+    @categories = Category.all
     if params[:search].present?
       @recipes = Recipe.search(params[:search]).page(params[:page]).per(12)
       @recipes_count = Recipe.search(params[:search])
-    elsif params[:tag_search]
-      @recipes = Recipe.where(tag_id: params[:tag_search]).page(params[:page]).per(12)
-      @recipes_count = Recipe.where(tag_id: params[:tag_search])
+    elsif params[:category_search]
+      @recipes = Recipe.where(category_id: params[:category_search]).page(params[:page]).per(12)
+      @recipes_count = Recipe.where(category_id: params[:category_search])
     else
       @recipes = Recipe.all.order(created_at: :desc).page(params[:page]).per(12)
       @recipes_count = Recipe.all
@@ -28,7 +28,7 @@ class Public::RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
-    @tags = Tag.all
+    @categories = Category.all
   end
 
   def create
@@ -66,7 +66,7 @@ class Public::RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(
       :user_id,
-      :tag_id,
+      :category_id,
       :title,
       :introduction,
       :image,
