@@ -33,6 +33,18 @@ class Recipe < ApplicationRecord
     protein_calory + carbo_calory + fat_calory
   end
 
+  def protein_rate
+    (protein_calory / total_calory * 100).round
+  end
+
+  def carbo_rate
+    (carbo_calory / total_calory * 100).round
+  end
+
+  def fat_rate
+    (fat_calory / total_calory * 100).round
+  end
+
   #ユーザーがレシピをお気に入り登録しているかを判断するメソッド
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
