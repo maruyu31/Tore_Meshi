@@ -71,11 +71,8 @@ class Public::RecipesController < ApplicationController
       :introduction,
       :image,
       :serving,
-      :protein,
-      :carbohydrate,
-      :fat,
       procedures_attributes: [:id, :body, :_destroy],
-      ingredients_attributes: [:id, :name, :amount, :_destroy]
+      ingredients_attributes: [:id, :name, :amount, :protein, :carbohydrate, :fat, :_destroy]
     )
   end
 end

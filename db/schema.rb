@@ -57,6 +57,9 @@ ActiveRecord::Schema.define(version: 2021_08_30_121246) do
     t.integer "recipe_id", null: false
     t.string "name", null: false
     t.string "amount"
+    t.float "protein", default: 0.0, null: false
+    t.float "carbohydrate", default: 0.0, null: false
+    t.float "fat", default: 0.0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -75,9 +78,6 @@ ActiveRecord::Schema.define(version: 2021_08_30_121246) do
     t.text "introduction"
     t.string "image_id"
     t.string "serving", null: false
-    t.float "protein", default: 0.0, null: false
-    t.float "carbohydrate", default: 0.0, null: false
-    t.float "fat", default: 0.0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

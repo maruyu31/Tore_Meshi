@@ -7,9 +7,6 @@ class CreateRecipes < ActiveRecord::Migration[5.2]
       t.text :introduction
       t.string :image_id
       t.string :serving, null: false
-      t.float :protein, default: 0, null: false
-      t.float :carbohydrate, default: 0, null: false
-      t.float :fat, default: 0, null: false
 
       t.timestamps
     end

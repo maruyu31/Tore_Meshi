@@ -61,27 +61,6 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="form-group mt-5 mx-auto">
-      <p class="text-center">炭水化物(g)</p>
-      <%= f.number_field :carbohydrate, step: "0.1" %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="form-group mt-5 mx-auto">
-      <p class="text-center">タンパク質(g)</p>
-      <%= f.text_field :protein, step: "0.1" %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="form-group mt-5 mx-auto">
-      <p class="text-center">脂質(g)</p>
-      <%= f.text_field :fat, step: "0.1" %>
-    </div>
-  </div>
-
   <div class="row mt-4 pb-5">
     <div class="form-inline mx-auto">
       <%= f.submit "新規登録", class: "btn btn-success btn-block" %>
