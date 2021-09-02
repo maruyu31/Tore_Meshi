@@ -4,7 +4,7 @@
       <div class="col-2">
         <%= attachment_image_tag @user, :profile_image, size: "120x100", fallback:"2977.jpg" %>
       </div>
-      
+
       <div class="col-8">
         <div class="mt-5">
           <h4><%= @user.name %></h4>
@@ -22,7 +22,7 @@
           </li>
         </ul>
       </div>
-      
+
       <div class="col-2 d-flex align-items-end">
         <%= link_to "編集", edit_user_path(@user) %>
       </div>
@@ -60,7 +60,7 @@
           <p>お気に入り登録したレシピはありません</p>
         <% end %>
       </div>
-      
+
       <div id="contents2" class="tab-pane">
         <% if @recipes.exists? %>
           <% @recipes.each do |recipe| %>

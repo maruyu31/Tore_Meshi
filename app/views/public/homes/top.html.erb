@@ -26,6 +26,21 @@
       </div>
     </div>
 
+    <% if user_signed_in? %>
+      <div class="row">
+        <h3 class="col-12 mt-5 mb-5">レシピランキング</h3>
+        <% @recipe_ranking.each do |ranking| %>
+          <div class="col-md-3 col-sm-12 text-center m-4 p-0">
+            <%= link_to recipe_path(ranking) do %>
+              <%= attachment_image_tag ranking, :image, :fill, 270, 235, class: "p-4" %>
+              <p class="text-dark"><%= ranking.title %></p>
+            <% end %>
+            <p>by <%= ranking.user.name %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
     <div class="row">
       <h3 class="col-12 mt-5 mb-5">お問い合わせ</h3>
       <%= form_with model: @contact, url: contacts_path, id: "new_contact", class: 'new_contact form-horizontal col-12', local: true do |f| %>
