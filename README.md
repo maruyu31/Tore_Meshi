@@ -28,6 +28,11 @@
         パスワード:    password
 
        また、ゲストログイン機能も実装しているのでそちらもご利用ください。
+       
+### 今後の課題
+-　下書き機能の作成
+-　レスポンシブ対応
+
 
 ## 設計書
 - [ER図](https://drive.google.com/file/d/1ZjsV8mWFEESAiq90yNLtkP1X00P8-sl6/view?usp=sharing)
