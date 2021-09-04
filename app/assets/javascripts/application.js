@@ -16,6 +16,6 @@
 
 //= require rails-ujs
 //= require activestorage
-//require turbolinksを削除
+//= require turbolinks
 //= require_tree .
 //= require cocoon
