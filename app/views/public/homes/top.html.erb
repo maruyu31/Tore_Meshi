@@ -2,31 +2,20 @@
   <div class="row">
     <h3 class="col-12 mt-5 mb-5">新着レシピ</h3>
     <% @new_recipes.each do |recipe| %>
-      <div class="col-md-3 col-sm-12 text-center">
+      <div class="col-md-4 col-sm-12 text-center">
         <div class="card mb-4 shadow-sm mx-auto">
           <%= link_to recipe_path(recipe) do %>
-          　<%= attachment_image_tag recipe, :image, :fill, 270, 235 %>
-          　<div class="card-body text-dark">
-          　   <h4><%= recipe.title %></h4>
+            <%= attachment_image_tag recipe, :image, :fill, 270, 235 %>
+            <div class="card-body text-dark">
+              <h4><%= recipe.title %></h4>
               <h6>by  <%= recipe.user.name %></h6>
-          　</div>
+            </div>
           <% end %>
         </div>
       </div>
     <% end %>
     <div class='col-12 text-right'>
       <%= link_to "レシピ一覧", recipes_path, class: "text-dark" %>
-    </div>
-  </div>
-
-  <div class="row">
-    <h3 class="col-12 mt-5 mb-5">カテゴリ一覧</h3>
-    <div class="col-12">
-      <ul class="list-group list-group-flush" style="max-width: 200px;">
-        <% @categories.each do |category| %>
-          <li class="list-group-item"><%= link_to "・" + category.name, recipes_path(category_search: category.id), class: "text-dark" %></li>
-        <% end %>
-      </ul>
     </div>
   </div>
 
@@ -38,13 +27,24 @@
           <%= link_to recipe_path(ranking) do %>
             <%= attachment_image_tag ranking, :image, :fill, 270, 235 %>
             <div class="card-body text-dark">
-              <p><%= ranking.title %></p>
-              <p>by <%= ranking.user.name %></p>
+              <h4><%= ranking.title %></h4>
+              <h6>by <%= ranking.user.name %></h6>
             </div>
           <% end %>
         </div>
       </div>
     <% end %>
+  </div>
+
+  <div class="row">
+    <h3 class="col-12 mt-5 mb-5">カテゴリ一覧</h3>
+    <div class="col-12">
+      <ul class="list-group list-group-flush" style="max-width: 200px;">
+        <% @categories.each do |category| %>
+          <li class="list-group-item"><%= link_to "・" + category.name, recipes_path(category_search: category.id), class: "text-dark" %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 
   <div class="row">
@@ -70,4 +70,3 @@
     <% end %>
   </div>
 </div>
-
