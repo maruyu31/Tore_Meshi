@@ -13,9 +13,9 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
   validates :name, presence: true
-  validates :encrypted_password, length: {minimum: 6}
-  #メールアドレスの正規表現
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :encrypted_password, length: { minimum: 6 }
+  # メールアドレスの正規表現
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
 
   attachment :profile_image
@@ -34,10 +34,10 @@ class User < ApplicationRecord
 
   # ユーザーが退会した際に、ログインできないようにする
   def active_for_authentication?
-    super && !(is_deleted?)
+    super && !is_deleted?
   end
 
-  #ゲストユーザー
+  # ゲストユーザー
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.name = "ゲストユーザー"

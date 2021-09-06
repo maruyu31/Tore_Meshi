@@ -55,10 +55,9 @@ class Public::RecipesController < ApplicationController
   end
 
   def search
-    #Viewのformで取得したパラメータをモデルに渡す
+    # Viewのformで取得したパラメータをモデルに渡す
     @recipes = Recipe.search(params[:search])
   end
-
 
   private
 

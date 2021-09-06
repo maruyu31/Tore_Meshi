@@ -4,7 +4,7 @@
 <script>
   var ctx = document.getElementById("CaloryChart");
   var myPieChart = new Chart(ctx, {
-    type: 'pie',
+    type: "pie",
     data: {
       labels: ["炭水化物<%= recipe.carbo_rate %>%", "タンパク質<%= recipe.protein_rate %>%", "脂質<%= recipe.fat_rate %>%"],
       datasets: [{
@@ -23,7 +23,7 @@
     options: {
       title: {
         display: true,
-        text: '栄養素割合(%)'
+        text: "栄養素割合(%)"
       }
     }
   });
