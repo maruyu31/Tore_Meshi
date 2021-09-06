@@ -7,9 +7,9 @@ class Public::ContactsController < ApplicationController
       render :top
     end
   end
-  
+
   private
-  
+
   def contact_params
     params.require(:contact).permit(:title, :body, :status)
   end

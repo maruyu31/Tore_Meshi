@@ -14,7 +14,7 @@
         </div>
       </div>
     <% end %>
-    <div class='col-12 text-right'>
+    <div class="col-12 text-right">
       <%= link_to "レシピ一覧", recipes_path, class: "text-dark" %>
     </div>
   </div>
@@ -49,7 +49,7 @@
 
   <div class="row">
     <h3 class="col-12 mt-5 mb-5">お問い合わせ</h3>
-    <%= form_with model: @contact, url: contacts_path, id: "new_contact", class: 'new_contact form-horizontal col-12', local: true do |f| %>
+    <%= form_with model: @contact, url: contacts_path, id: "new_contact", class: "new_contact form-horizontal col-12", local: true do |f| %>
       <div class="field form-group">
         <ul>
           <li><%= f.label :"お問い合わせタイトル", class: "control-label" %></li>
