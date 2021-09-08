@@ -9,16 +9,15 @@ class Public::RecipesController < ApplicationController
 
   def index
     @categories = Category.all
-    if params[:search].present?
-      @recipes = Recipe.search(params[:search]).page(params[:page]).per(12)
-      @recipes_count = Recipe.search(params[:search])
+    recipes = if params[:search].present?
+      Recipe.search(params[:search])
     elsif params[:category_search]
-      @recipes = Recipe.where(category_id: params[:category_search]).page(params[:page]).per(12)
-      @recipes_count = Recipe.where(category_id: params[:category_search])
+      Recipe.where(category_id: params[:category_search])
     else
-      @recipes = Recipe.all.order(created_at: :desc).page(params[:page]).per(12)
-      @recipes_count = Recipe.all
+      Recipe.all.order(created_at: :desc)
     end
+    @recipes_count = recipes.search(params[:search])
+    @recipes = recipes.page(params[:page]).per(12)
   end
 
   def show
@@ -56,10 +55,9 @@ class Public::RecipesController < ApplicationController
   end
 
   def search
-    #Viewのformで取得したパラメータをモデルに渡す
+    # Viewのformで取得したパラメータをモデルに渡す
     @recipes = Recipe.search(params[:search])
   end
-
 
   private
 
@@ -71,11 +69,8 @@ class Public::RecipesController < ApplicationController
       :introduction,
       :image,
       :serving,
-      :protein,
-      :carbohydrate,
-      :fat,
       procedures_attributes: [:id, :body, :_destroy],
-      ingredients_attributes: [:id, :name, :amount, :_destroy]
+      ingredients_attributes: [:id, :name, :amount, :protein, :carbohydrate, :fat, :_destroy]
     )
   end
 end

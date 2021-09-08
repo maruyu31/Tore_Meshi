@@ -1,4 +1,4 @@
-<%= form_with model: @recipe, url: recipe_path, id: 'edit_recipe', class: 'edit_recipe form-horizontal', local: true do |f| %>
+<%= form_with model: @recipe, url: recipe_path, id: "edit_recipe", class: "edit_recipe form-horizontal", local: true do |f| %>
   <%= render "public/users/shared/error_messages", resource: @recipe %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
 
@@ -41,7 +41,7 @@
     <div class="form-group mt-5 mx-auto">
       <p class="text-center">材料</p>
       <%= f.fields_for :ingredients do |ingredient| %>
-        <%= render 'ingredient_fields', f: ingredient %>
+        <%= render "ingredient_fields", f: ingredient %>
       <%end%>
       <div class="links">
         <%= link_to_add_association "材料を追加", f, :ingredients  %>
@@ -53,33 +53,11 @@
     <div class="form-group mt-5 mx-auto">
       <p class="text-center">手順</p>
       <%= f.fields_for :procedures do |procedure| %>
-        <%= render 'procedure_fields', f: procedure %>
+        <%= render "procedure_fields", f: procedure %>
       <%end%>
       <div class="links">
         <%= link_to_add_association "手順を追加", f, :procedures %>
       </div>
-    </div>
-  </div>
-
-
-  <div class="row">
-    <div class="form-group mt-5 mx-auto">
-      <p class="text-center">炭水化物(g)</p>
-      <%= f.number_field :carbohydrate, step: "0.1" %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="form-group mt-5 mx-auto">
-      <p class="text-center">タンパク質(g)</p>
-      <%= f.text_field :protein, step: "0.1" %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="form-group mt-5 mx-auto">
-      <p class="text-center">脂質(g)</p>
-      <%= f.text_field :fat, step: "0.1" %>
     </div>
   </div>
 

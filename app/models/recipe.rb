@@ -4,7 +4,7 @@ class Recipe < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :procedures, dependent: :destroy
   has_many :ingredients, dependent: :destroy
-  accepts_nested_attributes_for :procedures, :ingredients, allow_destroy: true #子項目削除のため
+  accepts_nested_attributes_for :procedures, :ingredients, allow_destroy: true # 子項目削除のため
   belongs_to :category
   attachment :image
 
@@ -12,28 +12,38 @@ class Recipe < ApplicationRecord
     validates :title
     validates :introduction
     validates :serving
-    validates :protein
-    validates :carbohydrate
-    validates :fat
   end
 
+  # カロリー計算のためのメソッド
   def protein_calory
-    self.protein * 4
+    self.ingredients.all.sum(:protein) * 4
   end
 
   def carbo_calory
-    self.carbohydrate * 4
+    self.ingredients.all.sum(:carbohydrate) * 4
   end
 
   def fat_calory
-    self.fat * 9
+    self.ingredients.all.sum(:fat) * 9
   end
 
   def total_calory
     protein_calory + carbo_calory + fat_calory
   end
 
-  #ユーザーがレシピをお気に入り登録しているかを判断するメソッド
+  def protein_rate
+    (protein_calory / total_calory * 100).round
+  end
+
+  def carbo_rate
+    (carbo_calory / total_calory * 100).round
+  end
+
+  def fat_rate
+    (fat_calory / total_calory * 100).round
+  end
+
+  # ユーザーがレシピをお気に入り登録しているかを判断するメソッド
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end

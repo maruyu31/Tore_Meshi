@@ -1,53 +1,72 @@
 <div class="container">
   <div class="row">
     <h3 class="col-12 mt-5 mb-5">新着レシピ</h3>
-      <% @new_recipes.each do |recipe| %>
-        <div class="col-md-5 col-sm-12 text-center m-4 p-0">
+    <% @new_recipes.each do |recipe| %>
+      <div class="col-md-4 col-sm-12 text-center">
+        <div class="card mb-4 shadow-sm mx-auto">
           <%= link_to recipe_path(recipe) do %>
-            <%= attachment_image_tag recipe, :image, :fill, 270, 235, class: "p-4" %>
-            <p class="text-dark"><%= recipe.title %></p>
+            <%= attachment_image_tag recipe, :image, :fill, 270, 235 %>
+            <div class="card-body text-dark">
+              <h4><%= recipe.title %></h4>
+              <h6>by  <%= recipe.user.name %></h6>
+            </div>
           <% end %>
-          <p>by <%= recipe.user.name %></p>
         </div>
-      <% end %>
-    </div>
-    <div class='text-right'>
+      </div>
+    <% end %>
+    <div class="col-12 text-right">
       <%= link_to "レシピ一覧", recipes_path, class: "text-dark" %>
     </div>
+  </div>
 
-    <div class="row">
-      <h3 class="col-12 mt-5 mb-5">カテゴリ一覧</h3>
-      <div class="col-12">
-        <ul class="list-group list-group-flush" style="max-width: 200px;">
-          <% @categories.each do |category| %>
-            <li class="list-group-item"><%= link_to "・" + category.name, recipes_path(category_search: category.id), class: "text-dark" %></li>
+  <div class="row">
+    <h3 class="col-12 mt-5 mb-5">レシピランキング</h3>
+    <% @recipe_ranking.each do |ranking| %>
+      <div class="col-md-4 col-sm-12 text-center">
+        <div class="card mb-4 shadow-sm">
+          <%= link_to recipe_path(ranking) do %>
+            <%= attachment_image_tag ranking, :image, :fill, 270, 235 %>
+            <div class="card-body text-dark">
+              <h4><%= ranking.title %></h4>
+              <h6>by <%= ranking.user.name %></h6>
+            </div>
           <% end %>
-        </ul>
+        </div>
       </div>
-    </div>
+    <% end %>
+  </div>
 
-    <div class="row">
-      <h3 class="col-12 mt-5 mb-5">お問い合わせ</h3>
-      <%= form_with model: @contact, url: contacts_path, id: "new_contact", class: 'new_contact form-horizontal col-12', local: true do |f| %>
-        <div class="field form-group">
-          <ul>
-            <li><%= f.label :"お問い合わせタイトル", class: "control-label" %></li>
-            <li><%= f.text_field :title, placeholder: "ご意見・ご要望、不具合など", size: 30 %></li>
-          </ul>
-        </div>
-
-        <div class="field form-group">
-          <ul>
-            <li><%= f.label :"お問い合わせ内容", class: "control-label" %></li>
-            <li><%= f.text_area :body, placeholder: "お気づきの点をお知らせください", size: "30x10" %></li>
-          </ul>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "送信", class: "btn btn-success" %>
-        </div>
-      <% end %>
+  <div class="row">
+    <h3 class="col-12 mt-5 mb-5">カテゴリ一覧</h3>
+    <div class="col-12">
+      <ul class="list-group list-group-flush" style="max-width: 200px;">
+        <% @categories.each do |category| %>
+          <li class="list-group-item"><%= link_to "・" + category.name, recipes_path(category_search: category.id), class: "text-dark" %></li>
+        <% end %>
+      </ul>
     </div>
   </div>
-</div>
 
+  <div class="row">
+    <h3 class="col-12 mt-5 mb-5">お問い合わせ</h3>
+    <%= form_with model: @contact, url: contacts_path, id: "new_contact", class: "new_contact form-horizontal col-12", local: true do |f| %>
+      <div class="field form-group">
+        <ul>
+          <li><%= f.label :"お問い合わせタイトル", class: "control-label" %></li>
+          <li><%= f.text_field :title, placeholder: "ご意見・ご要望、不具合など", size: 30 %></li>
+        </ul>
+      </div>
+
+      <div class="field form-group">
+        <ul>
+          <li><%= f.label :"お問い合わせ内容", class: "control-label" %></li>
+          <li><%= f.text_area :body, placeholder: "お気づきの点をお知らせください", size: "30x10" %></li>
+        </ul>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "送信", class: "btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
+</div>

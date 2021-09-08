@@ -33,13 +33,13 @@ Category.create!(name: "その他")
     title: Faker::Food.ingredient,
     introduction: Faker::Lorem.sentences(number: 30),
     serving: "1",
-    carbohydrate: 10,
-    protein: 2,
-    fat: 2,
     ingredients_attributes: [
       {
         name: "test",
         amount: "test",
+        carbohydrate: 10,
+        protein: 2,
+        fat: 2,
       }
     ],
     procedures_attributes: [
@@ -56,13 +56,13 @@ end
     title: Faker::Food.ingredient,
     introduction: Faker::Lorem.sentences(number: 30),
     serving: "1",
-    carbohydrate: 30,
-    protein: 15,
-    fat: 4,
     ingredients_attributes: [
       {
         name: "test",
         amount: "test",
+        carbohydrate: 30,
+        protein: 15,
+        fat: 4,
       }
     ],
     procedures_attributes: [
@@ -79,13 +79,13 @@ end
     title: Faker::Food.ingredient,
     introduction: Faker::Lorem.sentences(number: 30),
     serving: "1",
-    carbohydrate: 10,
-    protein: 30,
-    fat: 5,
     ingredients_attributes: [
       {
         name: "test",
         amount: "test",
+        carbohydrate: 10,
+        protein: 30,
+        fat: 5,
       }
     ],
     procedures_attributes: [
@@ -102,13 +102,13 @@ end
     title: Faker::Food.ingredient,
     introduction: Faker::Lorem.sentences(number: 30),
     serving: "1",
-    carbohydrate: 10,
-    protein: 2,
-    fat: 2,
     ingredients_attributes: [
       {
         name: "こめ",
         amount: "100",
+        carbohydrate: 10,
+        protein: 2,
+        fat: 2,
       }
     ],
     procedures_attributes: [
