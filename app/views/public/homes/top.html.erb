@@ -7,6 +7,10 @@
           <%= link_to recipe_path(recipe) do %>
             <%= attachment_image_tag recipe, :image, :fill, 270, 235 %>
             <div class="card-body text-dark">
+              <div class="row d-flex align-items-center justify-content-center">
+                <p class="btn btn-outline-dark btn-sm col-4"><%= recipe.category.name %></p>
+                <h4 class="col-8"><%= recipe.total_calory %>kcal</h4>
+              </div>
               <h4><%= recipe.title %></h4>
               <h6>by  <%= recipe.user.name %></h6>
             </div>
@@ -27,6 +31,10 @@
           <%= link_to recipe_path(ranking) do %>
             <%= attachment_image_tag ranking, :image, :fill, 270, 235 %>
             <div class="card-body text-dark">
+              <div class="row d-flex align-items-center justify-content-center">
+                <p class="btn btn-outline-dark btn-sm col-4"><%= ranking.category.name %></p>
+                <h4 class="col-8"><%= ranking.total_calory %>kcal</h4>
+              </div>
               <h4><%= ranking.title %></h4>
               <h6>by <%= ranking.user.name %></h6>
             </div>
