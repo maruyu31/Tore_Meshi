@@ -20,7 +20,7 @@ describe "ユーザーログイン前のテスト" do
       visit new_user_registration_path
     end
 
-    context "新規会員登録成功時のテスト" do
+    context "新規会員登録情報が全て入力される場合" do
       before do
         fill_in "user[name]", with: Faker::Name.name
         fill_in "user[email]", with: Faker::Internet.email
@@ -38,7 +38,7 @@ describe "ユーザーログイン前のテスト" do
       end
     end
 
-    context "新規会員登録失敗時のテスト" do
+    context "新規会員登録情報が入力されない場合" do
       before do
         fill_in "user[name]", with: ""
         fill_in "user[email]", with: ""
@@ -59,7 +59,7 @@ describe "ユーザーログイン前のテスト" do
       visit new_user_session_path
     end
 
-    context "ログイン成功時のテスト" do
+    context "ログインが成功した場合" do
       before do
         fill_in "user[email]", with: user.email
         fill_in "user[password]", with: user.password
@@ -71,7 +71,7 @@ describe "ユーザーログイン前のテスト" do
       end
     end
 
-    context "ログイン失敗時のテスト" do
+    context "ログインに失敗した場合" do
       before do
         fill_in "user[email]", with: ""
         fill_in "user[password]", with: ""
@@ -93,12 +93,10 @@ describe "ユーザーログイン前のテスト" do
       fill_in "user[password]", with: user.password
       click_button "ログイン"
     end
-
-    context "ログアウト機能のテスト" do
-      it "ログアウト後のリダイレクト先がログインページになっている" do
-        click_link "ログアウト"
-        expect(current_path).to eq "/users/sign_in"
-      end
+    
+    it "ログアウト後のリダイレクト先がログインページになっている" do
+      click_link "ログアウト"
+      expect(current_path).to eq "/users/sign_in"
     end
   end
 end
