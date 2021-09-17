@@ -13,10 +13,15 @@
         <div class="card mb-4 shadow-sm">
           <%= link_to recipe_path(recipe) do %>
             <%= attachment_image_tag recipe, :image, :fill, 270, 235, class: "img-responsive center-block" %>
-            <div class="card-body text-dark" style="height:150px">
+            <div class="card-body text-dark" style="height:200px">
+              <div class="row d-flex align-items-center justify-content-center">
+                <p class="btn btn-outline-dark btn-sm col-4"><%= recipe.category.name %></p>
+                <h4 class="col-8"><%= recipe.total_calory %>kcal</h4>
+              </div>
               <h4><%= recipe.title %></h4>
               <h6><%= recipe.introduction.truncate(50) %></h6>
               <h6>by  <%= recipe.user.name %></h6>
+
             </div>
           <% end %>
         </div>
