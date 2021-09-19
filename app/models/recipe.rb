@@ -22,15 +22,15 @@ class Recipe < ApplicationRecord
   # カロリー計算のためのメソッド
 
   def protein_calory
-    self.ingredients.all.sum(:protein).to_d * 4
+    (self.ingredients.all.sum(:protein).to_d * 4).ceil(1)
   end
 
   def carbo_calory
-    self.ingredients.all.sum(:carbohydrate).to_d * 4
+    (self.ingredients.all.sum(:carbohydrate).to_d * 4).ceil(1)
   end
 
   def fat_calory
-    self.ingredients.all.sum(:fat).to_d * 9
+    (self.ingredients.all.sum(:fat).to_d * 9).ceil(1)
   end
 
   def total_calory
