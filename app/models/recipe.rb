@@ -4,7 +4,6 @@ class Recipe < ApplicationRecord
   # to_d メソッドが使えるようになる
   require 'bigdecimal/util'
 
-
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
