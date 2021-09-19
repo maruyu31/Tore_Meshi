@@ -1,4 +1,9 @@
 class Recipe < ApplicationRecord
+  # Floatによる誤差をなくすためにBigDecimalを使用
+  require 'bigdecimal'
+  # to_d メソッドが使えるようになる
+  require 'bigdecimal/util'
+
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -15,16 +20,17 @@ class Recipe < ApplicationRecord
   end
 
   # カロリー計算のためのメソッド
+
   def protein_calory
-    self.ingredients.all.sum(:protein) * 4
+    self.ingredients.all.sum(:protein).to_d * 4
   end
 
   def carbo_calory
-    self.ingredients.all.sum(:carbohydrate) * 4
+    self.ingredients.all.sum(:carbohydrate).to_d * 4
   end
 
   def fat_calory
-    self.ingredients.all.sum(:fat) * 9
+    self.ingredients.all.sum(:fat).to_d * 9
   end
 
   def total_calory
