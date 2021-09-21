@@ -52,7 +52,7 @@
             <% @favorite_recipes.each do |favorite| %>
               <div class="col-md-4 col-sm-12 text-center mt-3">
                 <div class="card mb-4 shadow-sm">
-                  <%= link_to recipe_path(favorite) do %>
+                  <%= link_to recipe_path(favorite.recipe) do %>
                   　<%= attachment_image_tag favorite.recipe, :image, :fill, 270, 235 %>
                     <h4 class="mt-2 text-dark"><%= favorite.recipe.title %></h4>
                   <% end %>
