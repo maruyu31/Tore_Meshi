@@ -24,4 +24,16 @@ describe "管理者のテスト" do
       expect(current_path).to eq new_admin_session_path
     end
   end
+  
+  describe "管理者側のユーザー一覧のテスト" do
+    
+  end
+  
+  describe "管理者側のレシピ一覧のテスト" do
+    
+  end
+  
+  describe "管理者側の問い合わせ一覧のテスト" do
+    
+  end
 end

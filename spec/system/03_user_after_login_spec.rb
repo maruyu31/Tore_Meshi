@@ -9,6 +9,10 @@ describe "ログイン後のテスト" do
     fill_in 'user[password]', with: user.password
     click_button 'ログイン'
   end
+  
+  describe "ヘッダーのテスト" do
+    
+  end
 
   describe "ユーザーのテスト" do
     before do
@@ -30,5 +34,13 @@ describe "ログイン後のテスト" do
     # it "" do
 
     # end
+  end
+  
+  describe "レシピ一覧のテスト" do
+    
+  end
+  
+  describe "レシピ投稿のテスト" do
+    
   end
 end

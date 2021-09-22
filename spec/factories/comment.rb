@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :comment do
-    association :user
-    association :recipe
     comment { Faker::Lorem.characters(number: 20) }
+    association :recipe
+    user { recipe.user }
   end
 end
