@@ -14,6 +14,10 @@ describe "ユーザーログイン前のテスト" do
       expect(page).to have_link "ログイン"
     end
   end
+  
+  describe "アバウト画面のテスト" do
+    
+  end
 
   describe "ユーザー新規会員登録のテスト" do
     before do
