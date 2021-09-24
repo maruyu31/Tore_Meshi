@@ -4,7 +4,6 @@ require 'rails_helper'
 
 RSpec.describe Admin, type: :model do
   describe "Adminモデルのテスト" do
-
     it "メールアドレス、パスワードがあれば有効な状態であること" do
       expect(FactoryBot.build(:admin)).to be_valid
     end

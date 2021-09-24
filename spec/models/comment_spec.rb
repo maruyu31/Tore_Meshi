@@ -1,12 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-  let FactoryBot.create(:recipe)
-  let FactoryBot.create(:user)
-  
   describe "Commentモデルのテスト" do
     it "有効なコメントを持つこと" do
-      expect(FactoryBot.build(:comment)).to be_valid
+      expect(FactoryBot.create(:comment)).to be_valid
     end
     
     it "commentがなければ無効な状態であること" do
