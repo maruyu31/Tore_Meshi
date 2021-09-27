@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :ingredient do
-    association :recipe
     name { Faker::Food.ingredient }
     amount { "2" }
     protein { 10 }
