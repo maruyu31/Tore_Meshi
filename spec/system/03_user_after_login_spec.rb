@@ -23,17 +23,6 @@ describe "ログイン後のテスト" do
       expect(current_path).to eq "/users/" + user.id.to_s
     end
 
-    # it "" do
-
-    # end
-
-    # it "" do
-
-    # end
-
-    # it "" do
-
-    # end
   end
   
   describe "レシピ一覧のテスト" do
