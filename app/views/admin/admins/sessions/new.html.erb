@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-sm-12 mx-auto pb-5">
 
-      <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+      <%= form_with model: @admin, url: admin_session_path, local: true do |f| %>
         <%= render "public/users/shared/error_messages", resource: resource %>
 
         <div class="field form-group row">

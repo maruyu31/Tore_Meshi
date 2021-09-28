@@ -16,7 +16,15 @@ describe "ユーザーログイン前のテスト" do
   end
   
   describe "アバウト画面のテスト" do
-    
+    before do
+      visit about_path
+    end
+
+    context '表示内容の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/about'
+      end
+    end
   end
 
   describe "ユーザー新規会員登録のテスト" do
