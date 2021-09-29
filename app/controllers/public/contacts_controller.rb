@@ -4,7 +4,7 @@ class Public::ContactsController < ApplicationController
     if @contact.save
       redirect_to request.referer
     else
-      render :top
+      redirect_to request.referer
     end
   end
 
