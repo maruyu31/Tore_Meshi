@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe "ユーザーモデルのテスト" do
+  describe "Userモデルのテスト" do
     it "有効なユーザーを持つこと" do
       expect(FactoryBot.build(:user)).to be_valid
     end
@@ -16,7 +16,6 @@ RSpec.describe User, type: :model do
       user = FactoryBot.build(:user, email: nil)
       user.valid?
       expect(user.errors[:email]).to include("を入力してください")
-
     end
 
     it "重複したメールアドレスなら無効な無効な状態であること" do

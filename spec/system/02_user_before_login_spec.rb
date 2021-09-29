@@ -2,16 +2,60 @@ require 'rails_helper'
 
 describe "ユーザーログイン前のテスト" do
   describe "トップ画面のテスト" do
+    let!(:recipe) { create(:recipe) }
+    
     before do
       visit root_path
     end
-
-    it "ヘッダーに新規登録のリンクが存在する" do
-      expect(page).to have_link "新規登録"
+    
+    context "ヘッダーのテスト" do
+      it "URLが正しい" do
+        expect(current_path).to eq '/'
+      end
+      
+      it "ヘッダーにアバウトページのリンクが存在する" do
+        expect(page).to have_link "トレ飯とは"
+      end
+  
+      it "ヘッダーに新規登録のリンクが存在する" do
+        expect(page).to have_link "新規登録"
+      end
+  
+      it "ヘッダーにログインのリンクが存在する" do
+        expect(page).to have_link "ログイン"
+      end
+    end
+    
+    context "新着レシピのリンクのテスト" do
+      it "レシピのリンクが存在する" do
+        expect(page).to have_link "", href: recipe_path(recipe)
+      end
+      
+      it "レシピ一覧のリンクが存在する" do
+        expect(page).to have_link "", href: recipes_path
+      end
+    end
+    
+    context "問い合わせのテスト" do 
+      it "問い合わせフォームが存在する" do
+        expect(page).to have_field 'contact[body]'
+      end
+      
+      it "送信ボタンが存在する" do
+        expect(page).to have_button '送信'
+      end
+    end
+  end
+  
+  describe "アバウト画面のテスト" do
+    before do
+      visit about_path
     end
 
-    it "ヘッダーにログインのリンクが存在する" do
-      expect(page).to have_link "ログイン"
+    context '表示内容の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/about'
+      end
     end
   end
 
