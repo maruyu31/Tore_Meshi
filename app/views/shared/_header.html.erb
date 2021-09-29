@@ -6,7 +6,7 @@
         <%= form_with url: recipes_path, method: :get, local: true do |f| %>
           <div class="form-inline">
             <%= f.text_field :search, placeholder: "レシピを検索", class: "form-control col-10 p-0", size: 50 %>
-            <%= f.button :type => "submit", name: nil, class: "form-control col-2 btn btn-success", style: "border-style: none;" do %>
+            <%= f.button :type => "submit", name: nil, class: "form-control col-2 btn btn-success", id: "search", style: "border-style: none;" do %>
               <i class="fas fa-search"></i>
             <% end %>
           </div>

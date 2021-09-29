@@ -17,7 +17,7 @@ RSpec.describe Admin, type: :model do
     it "パスワードがなければ無効な状態であること" do
       admin = FactoryBot.build(:admin, password: nil)
       admin.valid?
-      expect(admin.erros[:email]).to include("を入力してください")
+      expect(admin.errors[:password]).to include("を入力してください")
     end
   end
 end
