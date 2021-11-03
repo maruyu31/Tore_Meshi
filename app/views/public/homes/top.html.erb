@@ -71,6 +71,9 @@
           <li><%= f.text_area :body, placeholder: "お気づきの点をお知らせください", size: "30x10" %></li>
         </ul>
       </div>
+      
+      <%= flash[:recaptcha_error] %>
+      <%= recaptcha_tags %>
 
       <div class="actions">
         <%= f.submit "送信", class: "btn btn-success" %>
